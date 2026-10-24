@@ -2,715 +2,155 @@
 <html lang="pl">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-    <title>WebCraft Studio | Tworzenie Stron i Opieka Techniczna</title>
-    
-    <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23ff5e00' stroke-width='2.5'><path d='M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5'/></svg>">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>WebCraft Studio | Pełna Tabela Pakietów Jednorazowych</title>
     <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;700;800&family=Inter:wght@300;400;500;600;800;900&display=swap" rel="stylesheet">
     <style>
         :root {
             --bg-base: #030305;
             --bg-card: rgba(8, 12, 20, 0.85);
-            --border-subtle: rgba(255, 94, 0, 0.15);
             --border-blue: rgba(0, 210, 255, 0.2);
-            --accent-orange: #ff5e00;
             --accent-blue: #00d2ff;
             --text-main: #f1f5f9;
             --text-muted: #8b9bb4;
             --font-mono: 'JetBrains Mono', monospace;
             --font-sans: 'Inter', sans-serif;
         }
-
-        * { box-sizing: border-box; margin: 0; padding: 0; scroll-behavior: smooth; }
-
+        * { box-sizing: border-box; margin: 0; padding: 0; }
         body {
             background-color: var(--bg-base);
-            background-image: 
-                radial-gradient(circle at 10% 10%, rgba(255, 94, 0, 0.03) 0%, transparent 40%),
-                radial-gradient(circle at 90% 90%, rgba(0, 210, 255, 0.03) 0%, transparent 40%);
             color: var(--text-main);
             font-family: var(--font-sans);
-            overflow-x: hidden;
+            padding: 2rem 1rem;
             line-height: 1.6;
-            min-height: 100vh;
         }
-
-        .hero { max-width: 1300px; margin: 3.5rem auto 3rem auto; padding: 0 1.5rem; text-align: center; }
-
-        .brand-badge {
-            display: inline-flex;
-            align-items: center;
-            gap: 10px;
-            background: rgba(8, 12, 20, 0.95);
-            border: 1px solid rgba(255, 94, 0, 0.35);
-            padding: 0.55rem 1.3rem;
-            border-radius: 50px;
-            margin-bottom: 2.2rem;
+        .container { max-width: 1200px; margin: 0 auto; }
+        .back-link {
+            display: inline-block;
+            font-family: var(--font-mono);
+            font-size: 0.8rem;
+            color: var(--accent-blue);
+            text-decoration: none;
+            margin-bottom: 2rem;
+        }
+        .back-link:hover { text-decoration: underline; }
+        h1 {
+            font-size: clamp(1.8rem, 3vw, 2.5rem);
+            font-weight: 900;
+            color: #fff;
+            margin-bottom: 0.5rem;
+        }
+        .subtitle {
+            color: var(--text-muted);
             font-family: var(--font-mono);
             font-size: 0.85rem;
-            font-weight: 800;
-            letter-spacing: 1px;
-            color: #fff;
-            text-transform: uppercase;
-            position: relative;
-            box-shadow: 0 0 20px rgba(255, 94, 0, 0.3), 0 0 45px rgba(0, 210, 255, 0.15);
-        }
-        
-        .brand-badge svg { 
-            stroke: var(--accent-orange); 
-            width: 18px; 
-            height: 18px; 
-            filter: drop-shadow(0 0 5px rgba(255, 94, 0, 0.7)); 
-        }
-        .brand-badge span { color: var(--accent-orange); }
-
-        h1 { 
-            font-size: clamp(2.2rem, 4.8vw, 4.2rem); 
-            font-weight: 900; 
-            line-height: 1.25; 
-            margin-bottom: 1.2rem; 
-            text-align: center;
-        }
-
-        .h1-top {
-            background: linear-gradient(90deg, var(--accent-blue) 0%, #33dbff 55%, #ffffff 85%);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
-            display: inline-block;
-        }
-
-        .h1-orange-text {
-            background: linear-gradient(90deg, #ffffff 0%, #ffaa66 30%, var(--accent-orange) 70%, #ff8c00 100%);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
-        }
-
-        .hero p { font-size: 1.02rem; color: var(--text-muted); max-width: 750px; margin: 0 auto 2.2rem auto; line-height: 1.6; }
-        
-        .hero-btns { display: flex; flex-wrap: wrap; gap: 1rem; justify-content: center; margin-bottom: 2rem; }
-        
-        .btn-primary {
-            padding: 0.85rem 1.8rem; border-radius: 6px; font-weight: 700; font-family: var(--font-mono);
-            font-size: 0.78rem; text-decoration: none; text-transform: uppercase;
-            background: var(--accent-orange); color: #030305; box-shadow: 0 4px 25px rgba(255, 94, 0, 0.35); transition: 0.25s; cursor: pointer; border: none; text-align: center; display: inline-block;
-        }
-        .btn-primary:hover { transform: translateY(-2px); box-shadow: 0 6px 35px rgba(255, 94, 0, 0.55); background: #ff7526; }
-
-        .btn-blue {
-            padding: 0.85rem 1.8rem; border-radius: 6px; font-weight: 700; font-family: var(--font-mono);
-            font-size: 0.78rem; text-decoration: none; text-transform: uppercase;
-            background: var(--accent-blue); color: #030305; box-shadow: 0 4px 25px rgba(0, 210, 255, 0.35); transition: 0.25s; cursor: pointer; border: none; text-align: center; display: inline-block;
-        }
-        .btn-blue:hover { transform: translateY(-2px); box-shadow: 0 6px 35px rgba(0, 210, 255, 0.55); background: #33dbff; }
-
-        .btn-outline {
-            background: transparent; border: 1px solid var(--border-subtle); color: var(--text-main);
-            padding: 0.85rem 1.8rem; border-radius: 6px; font-weight: 700; font-family: var(--font-mono);
-            font-size: 0.78rem; text-decoration: none; text-transform: uppercase; transition: 0.25s; cursor: pointer; text-align: center; display: inline-block;
-        }
-        .btn-outline:hover { border-color: var(--accent-orange); color: var(--accent-orange); background: rgba(255, 94, 0, 0.05); }
-
-        .section-container { max-width: 1400px; margin: 0 auto 5rem auto; padding: 0 1.5rem; }
-        .section-header-tag { font-family: var(--font-mono); font-size: 0.72rem; color: var(--accent-orange); text-transform: uppercase; letter-spacing: 2px; margin-bottom: 0.6rem; font-weight: 800; }
-        .section-title { font-size: clamp(1.5rem, 2.8vw, 2.2rem); font-weight: 900; color: #fff; margin-bottom: 2rem; }
-
-        .features-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
-            gap: 1.5rem;
             margin-bottom: 3rem;
         }
-        .feature-card {
+        .table-wrapper {
+            overflow-x: auto;
             background: var(--bg-card);
-            border: 1px solid var(--border-subtle);
-            border-radius: 12px;
-            padding: 1.8rem 1.5rem;
-            backdrop-filter: blur(12px);
-        }
-        .feature-icon-code { font-family: var(--font-mono); font-size: 0.9rem; color: var(--accent-orange); margin-bottom: 1rem; display: inline-block; font-weight: 700; }
-        .feature-card h3 { font-family: var(--font-mono); font-size: 1.05rem; color: #fff; margin-bottom: 0.6rem; }
-        .feature-card p { color: var(--text-muted); font-size: 0.85rem; line-height: 1.6; }
-
-        .steps-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
-            gap: 1.5rem;
-        }
-        .step-card {
-            background: rgba(5, 8, 15, 0.9);
             border: 1px solid var(--border-blue);
             border-radius: 12px;
-            padding: 1.8rem 1.5rem;
-            position: relative;
+            backdrop-filter: blur(12px);
         }
-        .step-number { font-family: var(--font-mono); font-size: 2.2rem; font-weight: 900; color: var(--accent-blue); opacity: 0.4; margin-bottom: 0.5rem; }
-        .step-card h4 { font-family: var(--font-mono); font-size: 1rem; color: #fff; margin-bottom: 0.5rem; }
-        .step-card p { color: var(--text-muted); font-size: 0.82rem; line-height: 1.5; }
-
-        .portfolio-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 1.5rem; max-width: 950px; margin: 0 auto; }
-        @media(max-width: 768px) { .portfolio-grid { grid-template-columns: 1fr; } }
-
-        .carousel-card {
-            background: var(--bg-card); border: 1px solid var(--border-subtle); border-radius: 12px;
-            padding: 2rem 1.5rem; text-decoration: none; color: inherit; display: flex;
-            flex-direction: column; justify-content: space-between; position: relative; overflow: hidden;
-            backdrop-filter: blur(12px); transition: all 0.3s ease; box-shadow: 0 10px 30px rgba(0,0,0,0.6);
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            text-align: left;
+            font-size: 0.9rem;
         }
-        .carousel-card::before {
-            content: ''; position: absolute; top: 0; left: 0; width: 3px; height: 100%;
-            background: var(--accent-orange); opacity: 0.6; transition: opacity 0.3s;
+        th, td {
+            padding: 1.2rem 1.5rem;
+            border-bottom: 1px solid rgba(0, 210, 255, 0.1);
         }
-        .carousel-card:hover { border-color: rgba(255,94,0,0.4); transform: translateY(-3px); }
-        .carousel-card:hover::before { opacity: 1; }
-        .carousel-card .tag {
-            font-family: var(--font-mono); font-size: 0.68rem; color: var(--accent-orange);
-            background: rgba(255, 94, 0, 0.08); border: 1px solid rgba(255, 94, 0, 0.2);
-            padding: 3px 8px; border-radius: 4px; width: fit-content; margin-bottom: 1rem; text-transform: uppercase;
+        th {
+            font-family: var(--font-mono);
+            font-size: 0.85rem;
+            color: var(--accent-blue);
+            background: rgba(0, 210, 255, 0.05);
+            text-transform: uppercase;
         }
-        .carousel-card h3 { font-size: 1.25rem; margin-bottom: 0.6rem; color: #fff; font-weight: 800; }
-        .carousel-card p { color: var(--text-muted); font-size: 0.85rem; margin-bottom: 1.5rem; line-height: 1.6; }
-        .card-link-hint { font-family: var(--font-mono); font-size: 0.75rem; color: var(--accent-orange); font-weight: 700; text-transform: uppercase; }
-
-        .pricing-grid-blue { display: grid; grid-template-columns: repeat(auto-fit, minmax(230px, 1fr)); gap: 1.5rem; }
-        .price-card-blue {
-            background: var(--bg-card); border: 1px solid var(--border-blue); border-radius: 12px;
-            padding: 2rem 1.5rem; position: relative; backdrop-filter: blur(12px); display: flex; flex-direction: column; justify-content: space-between;
-        }
-        .price-card-blue.featured {
-            border-color: var(--accent-blue); box-shadow: 0 0 30px rgba(0, 210, 255, 0.12);
-            background: linear-gradient(180deg, rgba(0, 210, 255, 0.04) 0%, rgba(8, 12, 20, 0.95) 100%);
-        }
-        .popular-tag-blue {
-            position: absolute; top: -11px; left: 50%; transform: translateX(-50%);
-            background: var(--accent-blue); color: #030305; font-family: var(--font-mono);
-            font-size: 0.62rem; font-weight: 800; padding: 3px 12px; border-radius: 20px; text-transform: uppercase;
-        }
-        .plan-name-blue { font-family: var(--font-mono); font-size: 1.05rem; color: #fff; margin-bottom: 0.4rem; }
-        .plan-price-blue { font-family: var(--font-mono); font-size: 1.85rem; font-weight: 800; color: var(--accent-blue); margin-bottom: 1rem; }
-        .plan-list-blue { list-style: none; display: flex; flex-direction: column; gap: 0.5rem; font-size: 0.82rem; color: var(--text-muted); font-family: var(--font-mono); margin-bottom: 1.5rem; }
-        .plan-list-blue li::before { content: "› "; color: var(--accent-blue); font-weight: bold; font-size: 1rem; }
-
-        .pricing-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 1.5rem; }
-        .price-card {
-            background: var(--bg-card); border: 1px solid var(--border-subtle); border-radius: 12px;
-            padding: 2rem 1.5rem; position: relative; backdrop-filter: blur(12px); display: flex; flex-direction: column; justify-content: space-between;
-        }
-        .price-card.featured {
-            border-color: var(--accent-orange); box-shadow: 0 0 35px rgba(255, 94, 0, 0.12);
-            background: linear-gradient(180deg, rgba(255, 94, 0, 0.05) 0%, rgba(8, 12, 20, 0.95) 100%);
-        }
-        .popular-tag {
-            position: absolute; top: -11px; left: 50%; transform: translateX(-50%);
-            background: var(--accent-orange); color: #030305; font-family: var(--font-mono);
-            font-size: 0.62rem; font-weight: 800; padding: 3px 12px; border-radius: 20px; text-transform: uppercase;
-        }
-        .plan-name { font-family: var(--font-mono); font-size: 1.05rem; color: #fff; margin-bottom: 0.4rem; }
-        .plan-price { font-family: var(--font-mono); font-size: 1.85rem; font-weight: 800; color: var(--accent-orange); margin-bottom: 1rem; }
-        .plan-list { list-style: none; display: flex; flex-direction: column; gap: 0.5rem; font-size: 0.82rem; color: var(--text-muted); font-family: var(--font-mono); margin-bottom: 1.5rem; }
-        .plan-list li::before { content: "› "; color: var(--accent-orange); font-weight: bold; font-size: 1rem; }
-
-        .modal-overlay {
-            display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%;
-            background: rgba(3, 3, 5, 0.85); backdrop-filter: blur(12px); z-index: 2000;
-            justify-content: center; align-items: center; padding: 1.2rem;
-        }
-        .modal-content {
-            background: var(--bg-card); border: 1px solid var(--accent-orange); border-radius: 14px;
-            max-width: 600px; width: 100%; padding: 2rem; position: relative; max-height: 90vh; overflow-y: auto;
-        }
-        .modal-close { position: absolute; top: 1.2rem; right: 1.2rem; background: none; border: none; color: var(--text-muted); font-size: 1.4rem; cursor: pointer; }
-        .details-title { font-family: var(--font-mono); font-size: 0.8rem; color: var(--accent-orange); text-transform: uppercase; margin: 1rem 0 0.4rem 0; font-weight: 700; }
-        .details-list { list-style: none; display: flex; flex-direction: column; gap: 0.4rem; font-size: 0.85rem; color: var(--text-muted); font-family: var(--font-mono); }
-        .details-list.included li::before { content: "[OK] "; color: #22c55e; font-weight: bold; }
-        .details-list.excluded li::before { content: "[X] "; color: #ef4444; font-weight: bold; }
-
-        .order-section {
-            background: var(--bg-card); 
-            border: 1px solid var(--border-blue); 
-            border-radius: 14px; 
-            padding: 2.5rem 1.5rem; 
-            max-width: 680px; 
-            margin: 0 auto;
-            box-shadow: 0 8px 32px rgba(0, 210, 255, 0.05);
-        }
-        .form-group { margin-bottom: 1.1rem; }
-        .form-group label { display: block; font-family: var(--font-mono); font-size: 0.72rem; color: var(--accent-blue); text-transform: uppercase; margin-bottom: 0.35rem; font-weight: 700; }
-        .form-group input, .form-group select, .form-group textarea {
-            width: 100%; padding: 0.75rem 0.9rem; border: 1px solid var(--border-blue); border-radius: 6px; background: rgba(3, 3, 5, 0.9); color: #fff; font-size: 0.9rem; font-family: inherit; transition: all 0.25s ease;
-        }
-        .form-group input:focus, .form-group select:focus, .form-group textarea:focus {
-            outline: none; border-color: var(--accent-blue); box-shadow: 0 0 12px rgba(0, 210, 255, 0.25);
-        }
-        .form-group textarea { resize: vertical; min-height: 110px; }
-
-        #cookieBanner {
-            position: fixed; bottom: 0; left: 0; width: 100%; background: rgba(8, 12, 20, 0.96);
-            border-top: 1px solid var(--border-subtle); backdrop-filter: blur(16px); padding: 1rem 1.5rem;
-            display: flex; justify-content: space-between; align-items: center; z-index: 9999; gap: 1rem; flex-wrap: wrap;
-        }
-        #cookieBanner p { font-size: 0.8rem; color: var(--text-muted); max-width: 850px; font-family: var(--font-mono); }
-
-        footer {
-            border-top: 1px solid var(--border-subtle); padding: 2rem 1.2rem; text-align: center;
-            font-family: var(--font-mono); font-size: 0.72rem; color: var(--text-muted); background: #010103;
-            display: flex; flex-direction: column; gap: 0.5rem; align-items: center;
-        }
-        .footer-links { display: flex; gap: 1.2rem; justify-content: center; margin-bottom: 0.4rem; }
-        .footer-links a { color: var(--accent-orange); text-decoration: none; cursor: pointer; }
-        .footer-links a:hover { text-decoration: underline; }
-
-        @media (max-width: 768px) {
-            .hero { margin: 2.5rem auto 2rem auto; padding: 0 1rem; }
-            .section-container { padding: 0 1rem; }
-            #cookieBanner { flex-direction: column; text-align: center; padding: 1rem; }
+        td { color: var(--text-muted); font-family: var(--font-mono); }
+        td:first-child { color: #fff; font-weight: 700; }
+        .yes { color: #22c55e; font-weight: bold; }
+        .no { color: #ef4444; font-weight: bold; }
+        .price-row td {
+            font-size: 1.25rem;
+            font-weight: 800;
+            color: var(--accent-blue);
         }
     </style>
 </head>
 <body>
+    <div class="container">
+        <a href="index.html" class="back-link">&larr; Powrót do strony głównej</a>
+        <h1>Szczegółowa Tabela Porównawcza</h1>
+        <p class="subtitle">// Pakiety Jednorazowego Tworzenia Stron</p>
 
-    <section class="hero">
-        <div class="brand-badge">
-            <svg viewBox="0 0 24 24" fill="none" stroke-width="2.5"><path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"/></svg>
-            WebCraft <span>Studio</span>
-        </div>
-
-        <h1>
-            <span class="h1-top">Zaufane i bezpieczne rozwiązania</span><br>
-            <span>Strony oraz opieka </span><span class="h1-orange-text">twojego biznesu</span>
-        </h1>
-        <p>Tworzymy nowoczesne strony oparte na sprawdzonych i bezpiecznych frameworkach oraz szablonach. Zapewniamy stałe wsparcie techniczne, stabilny hosting w chmurze i pełne bezpieczeństwo w modelu abonamentowym.</p>
-        <div class="hero-btns">
-            <a href="#pakiety-stron" class="btn-blue">Pakiety Stron (Jednorazowe)</a>
-            <a href="#pakiety-saas" class="btn-primary">Pakiety Abonamentowe SaaS</a>
-        </div>
-    </section>
-
-    <!-- 1. SEKCJA ZALET -->
-    <section class="section-container" id="dlaczego-my">
-        <div class="section-header-tag">// Dedykowana Jakość IT</div>
-        <h2 class="section-title">Dlaczego warto z nami współpracować?</h2>
-        
-        <div class="features-grid">
-            <div class="feature-card">
-                <div class="feature-icon-code">[PERF]</div>
-                <h3>Sprawdzone Szablony &amp; Szybkość</h3>
-                <p>Korzystamy z solidnych, przetestowanych baz i szablonów zoptymalizowanych pod kątem wydajności. Szybkie ładowanie i stabilność działania.</p>
-            </div>
-            <div class="feature-card">
-                <div class="feature-icon-code">[RWD]</div>
-                <h3>Pełna Responsywność</h3>
-                <p>Każdy projekt wdrożeniowy jest precyzyjnie dopasowany pod ekrany smartfonów, tabletów oraz monitorów desktopowych.</p>
-            </div>
-            <div class="feature-card">
-                <div class="feature-icon-code">[INFRA]</div>
-                <h3>Partnerstwo i Infrastruktura</h3>
-                <p>Opieramy usługi na sprawdzonych dostawcach chmurowych, zapewniając stałą dostępność i ochronę Twojego biznesu w sieci.</p>
-            </div>
-            <div class="feature-card">
-                <div class="feature-icon-code">[CARE]</div>
-                <h3>Stałe Wsparcie (SaaS)</h3>
-                <p>Nie zostawiamy Cię ze stroną samemu sobie. W abonamencie dbamy o regularne kopie zapasowe, aktualizacje i bezpieczny hosting.</p>
-            </div>
-        </div>
-    </section>
-
-    <!-- 2. KATALOG PODSTRON DEMO -->
-    <section class="section-container" id="portfolio">
-        <div class="section-header-tag">// Portfel Wdrożeń Komercyjnych</div>
-        <h2 class="section-title">Przykładowe Projekty &amp; Wzorce</h2>
-        
-        <div class="portfolio-grid">
-            <a href="examples/photography/index.html" class="carousel-card">
-                <div>
-                    <div class="tag">Fotografia / Portfolio</div>
-                    <h3>ArtFocus Studio</h3>
-                    <p>Minimalistyczny serwis wizytówkowy ze zintegrowanym systemem rezerwacji terminów i galerią ultra-HD.</p>
-                </div>
-                <div class="card-link-hint">Otwórz podstronę demo &rarr;</div>
-            </a>
-
-            <a href="examples/bistro/index.html" class="carousel-card">
-                <div>
-                    <div class="tag">Gastronomiczny / HoReCa</div>
-                    <h3>Bistro &amp; Cafe Aura</h3>
-                    <p>Nowoczesny layout dedykowany branży gastronomicznej z interaktywną kartą menu oraz rezerwacją stolików.</p>
-                </div>
-                <div class="card-link-hint">Otwórz podstronę demo &rarr;</div>
-            </a>
-        </div>
-    </section>
-
-    <!-- 3. PAKIETY JEDNORAZOWE (NIEBIESKIE) -->
-    <section class="section-container" id="pakiety-stron">
-        <div class="section-header-tag" style="color: var(--accent-blue);">// Cennik Jednorazowy Wdrożeń</div>
-        <h2 class="section-title">Pakiety Tworzenia Stron (Jednorazowe)</h2>
-        
-        <div class="pricing-grid-blue">
-            <div class="price-card-blue">
-                <div>
-                    <div class="plan-name-blue">Wizytówka / One-Page</div>
-                    <div class="plan-price-blue">500 zł</div>
-                    <ul class="plan-list-blue">
-                        <li>Responsywny układ bazowy</li>
-                        <li>Formularz kontaktowy</li>
-                        <li>Optymalizacja pod mobile</li>
-                    </ul>
-                </div>
-                <button class="btn-outline open-modal-btn" 
-                    data-title="Wizytówka / One-Page (500 zł)"
-                    data-price="Jednorazowo: 500 zł"
-                    data-desc="Idealna dla małej firmy, salonu lub eksperta potrzebującego profesjonalnej obecności w sieci."
-                    data-included="Wdrożenie sprawdzonego szablonu, konfiguracja HTML/CSS/JS, responsywność na urządzeniach mobilnych, podpięcie formularza kontaktowego, podstawowe SEO"
-                    data-excluded="Brak dedykowanego systemu CMS, Brak podstron dodatkowych"
-                    style="width: 100%; border-color: var(--border-blue); color: #fff;">Więcej szczegółów</button>
-            </div>
-
-            <div class="price-card-blue featured">
-                <div class="popular-tag-blue">Najwyższa Konwersja</div>
-                <div>
-                    <div class="plan-name-blue">Landing Page / Biznes</div>
-                    <div class="plan-price-blue">1 200 zł</div>
-                    <ul class="plan-list-blue">
-                        <li>Wielosekcyjny layout</li>
-                        <li>Interaktywne animacje</li>
-                        <li>System rezerwacji / menu</li>
-                    </ul>
-                </div>
-                <button class="btn-blue open-modal-btn" 
-                    data-title="Landing Page / Biznes (1 200 zł)"
-                    data-price="Jednorazowo: 1 200 zł"
-                    data-desc="Zaawansowana strona nastawiona na sprzedaż, pozyskiwanie klientów i rezerwacje oparte na zaufanych architekturach."
-                    data-included="Wszystko z pakietu Wizytówka, System rezerwacji wizyt / menu, Zaawansowane animacje, Optymalizacja szybkości (Core Web Vitals)"
-                    data-excluded="Brak dedykowanej bazy danych backendowej bez aktywnego abonamentu SaaS"
-                    style="width: 100%;">Więcej szczegółów</button>
-            </div>
-
-            <div class="price-card-blue">
-                <div>
-                    <div class="plan-name-blue">Sklep / Wizytówka PRO</div>
-                    <div class="plan-price-blue">2 200 zł</div>
-                    <ul class="plan-list-blue">
-                        <li>Rozbudowana struktura</li>
-                        <li>Wielu podstron i sekcji</li>
-                        <li>Gotowe sekcje produktowe</li>
-                    </ul>
-                </div>
-                <button class="btn-outline open-modal-btn" 
-                    data-title="Sklep / Wizytówka PRO (2 200 zł)"
-                    data-price="Jednorazowo: 2 200 zł"
-                    data-desc="Większa strona firmowa z dedykowanymi sekcjami i możliwością prezentacji oferty lub prostego katalogu."
-                    data-included="Rozbudowany layout wielostronicowy, sekcje katalogowe produktów/usług, integracja z social media, optymalizacja graficzna"
-                    data-excluded="Brak zaawansowanych systemów ERP"
-                    style="width: 100%; border-color: var(--border-blue); color: #fff;">Więcej szczegółów</button>
-            </div>
-
-            <div class="price-card-blue">
-                <div>
-                    <div class="plan-name-blue">Pakiet Indywidualny</div>
-                    <div class="plan-price-blue">Wycena</div>
-                    <ul class="plan-list-blue">
-                        <li>Dostosowanie do potrzeb</li>
-                        <li>Unikalne funkcjonalności</li>
-                        <li>Elastyczna wycena</li>
-                    </ul>
-                </div>
-                <button class="btn-outline open-modal-btn" 
-                    data-title="Pakiet Indywidualny / Dostosuj do siebie (Wycena)"
-                    data-price="Wycena indywidualna"
-                    data-desc="Potrzebujesz czegoś unikalnego? Dobierzemy funkcje dokładnie pod specyfikę Twojego biznesu."
-                    data-included="Konsultacja techniczna, dobór funkcji pod klienta, elastyczny zakres prac, indywidualny harmonogram"
-                    data-excluded="Brak stałej ceny katalogowej"
-                    style="width: 100%; border-color: var(--border-blue); color: #fff;">Dostosuj pakiet</button>
-            </div>
-        </div>
-
-        <div style="text-align: center; margin-top: 2.5rem;">
-            <a href="pakiety-jednorazowe.html" class="btn-blue" style="text-decoration: none;">
-                📊 Otwórz Pełną Tabelę Porównawczą Pakietów Jednorazowych &rarr;
-            </a>
-        </div>
-    </section>
-
-    <!-- 4. PAKIETY ABONAMENTOWE (POMARAŃCZOWE) -->
-    <section class="section-container" id="pakiety-saas">
-        <div class="section-header-tag">// Model Abonamentowy i Infrastruktura</div>
-        <h2 class="section-title">Pakiety Opieki i Hostingu (SaaS)</h2>
-        
-        <div class="pricing-grid">
-            <div class="price-card">
-                <div>
-                    <div class="plan-name">Starter Cloud</div>
-                    <div class="plan-price">199 zł <span style="font-size: 0.75rem; color: var(--text-muted);">/mc</span></div>
-                    <ul class="plan-list">
-                        <li>Hosting Shared SSD &amp; SSL</li>
-                        <li>Miesięczny backup danych</li>
-                        <li>Drobne poprawki treści (do 2h/mc)</li>
-                    </ul>
-                </div>
-                <button class="btn-outline open-modal-btn" 
-                    data-title="Starter Cloud (199 zł / mc)"
-                    data-price="199 zł / miesiąc"
-                    data-desc="Podstawowy pakiet bezobsługowego utrzymania strony i bezpiecznego hostingu."
-                    data-included="Hosting w chmurze SSD (10 GB), Certyfikat SSL, Miesięczny backup, Wprowadzanie poprawek tekstów do 2h w miesiącu"
-                    data-excluded="Brak ochrony WAF przed atakami, Brak odnowienia domeny w cenie"
-                    style="width: 100%; margin-top: 1.2rem;">Więcej szczegółów</button>
-            </div>
-
-            <div class="price-card featured">
-                <div class="popular-tag">Rekomendowany</div>
-                <div>
-                    <div class="plan-name">Business Ops</div>
-                    <div class="plan-price">499 zł <span style="font-size: 0.75rem; color: var(--text-muted);">/mc</span></div>
-                    <ul class="plan-list">
-                        <li>Szybki NVMe Cloud &amp; Domena .pl</li>
-                        <li>Cotygodniowy backup &amp; Ochrona WAF</li>
-                        <li>Rozbudowa i wsparcie (do 5h/mc)</li>
-                    </ul>
-                </div>
-                <button class="btn-primary open-modal-btn" 
-                    data-title="Business Ops (499 zł / mc)"
-                    data-price="499 zł / miesiąc"
-                    data-desc="Kompleksowa opieka techniczna i wydajnościowe wsparcie dla firm oparte na zewnętrznych, stabilnych zasobach partnera."
-                    data-included="Hosting NVMe (50 GB), SSL, Cotygodniowy backup, Zapora WAF przeciw atakom, Wdrożenia do 5h/mc, Odnowienie domeny .pl w cenie, Dostęp do środowiska Staging"
-                    data-excluded="Brak dedykowanego serwera izolowanego"
-                    style="width: 100%; margin-top: 1.2rem;">Więcej szczegółów</button>
-            </div>
-
-            <div class="price-card">
-                <div>
-                    <div class="plan-name">Pro Support</div>
-                    <div class="plan-price">999 zł <span style="font-size: 0.75rem; color: var(--text-muted);">/mc</span></div>
-                    <ul class="plan-list">
-                        <li>Izolowany Serwer VPS / NVMe</li>
-                        <li>Codzienny backup &amp; Ochrona Bot/DDoS</li>
-                        <li>Pakiet rozbudowy modułów (do 12h/mc)</li>
-                    </ul>
-                </div>
-                <button class="btn-outline open-modal-btn" 
-                    data-title="Pro Support (999 zł / mc)"
-                    data-price="999 zł / miesiąc"
-                    data-desc="Dla wymagających projektów potrzebujących dedykowanych zasobów VPS i natychmiastowej reakcji technicznej."
-                    data-included="Dedykowana instancja VPS NVMe (200 GB), Codzienny backup, Ochrona Anti-DDoS i BotGuard, Pakiet 12h na rozwój w miesiącu, SLA reakcji do 4h, Kwartalny audyt bezpieczeństwa"
-                    data-excluded="Niewykorzystane godziny nie przechodzą na kolejny miesiąc"
-                    style="width: 100%; margin-top: 1.2rem;">Więcej szczegółów</button>
-            </div>
-        </div>
-
-        <div style="text-align: center; margin-top: 2.5rem;">
-            <a href="pakiety-saas.html" class="btn-outline" style="border-color: var(--accent-orange); color: var(--accent-orange); text-decoration: none;">
-                📊 Otwórz Pełną Tabelę Porównawczą Pakietów SaaS &rarr;
-            </a>
-        </div>
-    </section>
-
-    <!-- 5. SEKCJA KROKI WSPÓŁPRACY -->
-    <section class="section-container">
-        <div class="section-header-tag">// Przejrzysty Proces</div>
-        <h2 class="section-title">Jak wygląda współpraca krok po kroku?</h2>
-        
-        <div class="steps-grid">
-            <div class="step-card">
-                <div class="step-number">01</div>
-                <h4>Konsultacja &amp; Wycena</h4>
-                <p>Omawiamy Twoje potrzeby, dobieramy sprawdzony szablon i optymalne rozwiązanie bez ukrytych kosztów.</p>
-            </div>
-            <div class="step-card">
-                <div class="step-number">02</div>
-                <h4>Konfiguracja &amp; Wdrożenie</h4>
-                <p>Dopasowujemy strukturę do Twojej marki, wdrażając bezpieczny i sprawdzony kod.</p>
-            </div>
-            <div class="step-card">
-                <div class="step-number">03</div>
-                <h4>Optymalizacja &amp; Testy</h4>
-                <p>Testujemy responsywność na urządzeniach, konfigurujemy połączenia oraz optymalizujemy szybkość działania witryny.</p>
-            </div>
-            <div class="step-card">
-                <div class="step-number">04</div>
-                <h4>Publikacja &amp; Opieka</h4>
-                <p>Uruchamiamy stronę w domenie. W pakiecie SaaS dbamy o kopie zapasowe oraz sprawne działanie 24/7.</p>
-            </div>
-        </div>
-    </section>
-
-    <!-- MODAL SZCZEGÓŁÓW -->
-    <div class="modal-overlay" id="detailsModal">
-        <div class="modal-content">
-            <button class="modal-close" id="closeModal">&times;</button>
-            <h3 id="modalTitle" style="font-family: 'JetBrains Mono', monospace; font-size: 1.1rem; color: #fff; margin-bottom: 0.2rem;">Pakiet</h3>
-            <div id="modalPrice" style="font-family: 'JetBrains Mono', monospace; color: var(--accent-orange); font-size: 0.95rem; margin-bottom: 0.7rem; font-weight: bold;">Cena</div>
-            <p id="modalDesc" style="font-size: 0.82rem; color: var(--text-muted); margin-bottom: 1rem;"></p>
-
-            <div class="details-title">// Co jest wliczone</div>
-            <ul class="details-list included" id="modalIncluded"></ul>
-
-            <div class="details-title">// Czego NIE ma w pakiecie</div>
-            <ul class="details-list excluded" id="modalExcluded"></ul>
-
-            <div style="margin-top: 1.2rem;">
-                <button class="btn-primary" id="selectThisPackageBtn" style="width: 100%;">Wybierz ten pakiet w formularzu</button>
-            </div>
+        <div class="table-wrapper">
+            <table>
+                <thead>
+                    <tr>
+                        <th>Parametr / Funkcja</th>
+                        <th>Wizytówka / One-Page</th>
+                        <th>Landing Page / Biznes</th>
+                        <th>Sklep / Wizytówka PRO</th>
+                        <th>Pakiet Indywidualny</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr class="price-row">
+                        <td>Cena</td>
+                        <td>500 zł</td>
+                        <td>1 200 zł</td>
+                        <td>2 200 zł</td>
+                        <td>Wycena</td>
+                    </tr>
+                    <tr>
+                        <td>Typ layoutu</td>
+                        <td>Jednostronicowy (One-Page)</td>
+                        <td>Wielosekcyjny zaawansowany</td>
+                        <td>Rozbudowany wielostronicowy</td>
+                        <td>Dostosowany do klienta</td>
+                    </tr>
+                    <tr>
+                        <td>Responsywność (Mobile)</td>
+                        <td class="yes">[OK]</td>
+                        <td class="yes">[OK]</td>
+                        <td class="yes">[OK]</td>
+                        <td class="yes">[OK]</td>
+                    </tr>
+                    <tr>
+                        <td>Formularz kontaktowy</td>
+                        <td class="yes">[OK]</td>
+                        <td class="yes">[OK]</td>
+                        <td class="yes">[OK]</td>
+                        <td class="yes">[OK]</td>
+                    </tr>
+                    <tr>
+                        <td>Interaktywne animacje</td>
+                        <td class="no">[X]</td>
+                        <td class="yes">[OK]</td>
+                        <td class="yes">[OK]</td>
+                        <td class="yes">[OK]</td>
+                    </tr>
+                    <tr>
+                        <td>Sekcje katalogu / ofertowe</td>
+                        <td class="no">[X]</td>
+                        <td class="no">[X]</td>
+                        <td class="yes">[OK]</td>
+                        <td class="yes">[OK]</td>
+                    </tr>
+                    <tr>
+                        <td>Indywidualny zakres funkcji</td>
+                        <td class="no">[X]</td>
+                        <td class="no">[X]</td>
+                        <td class="no">[X]</td>
+                        <td class="yes">[OK]</td>
+                    </tr>
+                </tbody>
+            </table>
         </div>
     </div>
-
-    <!-- MODAL REGULAMINU -->
-    <div class="modal-overlay" id="regulaminModal">
-        <div class="modal-content">
-            <button class="modal-close" id="closeRegulamin">&times;</button>
-            <h3 style="font-family: 'JetBrains Mono', monospace; font-size: 1.2rem; color: #fff; margin-bottom: 0.8rem;">Regulamin Świadczenia Usług</h3>
-            <div style="font-size: 0.82rem; color: var(--text-muted); display: flex; flex-direction: column; gap: 0.8rem; max-height: 55vh; overflow-y: auto; padding-right: 5px;">
-                <p><strong>§1. Postanowienia Ogólne</strong><br>Niniejszy regulamin określa zasady korzystania z usług WebCraft Studio.</p>
-                <p><strong>§2. Rodzaje i Zakres Usług</strong><br>1. WebCraft Studio świadczy usługi tworzenia stron w oparciu o sprawdzone rozwiązania oraz opieki technicznej i hostingu w abonamencie.</p>
-                <p><strong>§3. Płatności</strong><br>1. Pakiety jednorazowe opłacane są zgodnie z umową. Pakiety abonamentowe rozliczane są cyklicznie.</p>
-            </div>
-            <div style="margin-top: 1.2rem;">
-                <button class="btn-primary" id="closeRegulaminBtn" style="width: 100%;">Rozumiem i zamykam</button>
-            </div>
-        </div>
-    </div>
-
-    <!-- 6. FORMULARZ KONTAKTOWY -->
-    <section class="section-container" id="kontakt">
-        <div class="order-section">
-            <div class="section-header-tag" style="text-align: left; color: var(--accent-blue);">// Zapytaj o ofertę</div>
-            <h2 class="section-title" style="font-size: 1.35rem; margin-bottom: 0.4rem; text-align: left;">Formularz Zamówienia / Kontakt</h2>
-            <p style="text-align: left; margin-bottom: 1.5rem; font-size: 0.85rem; color: var(--text-muted);">Wybierz interesujący Cię pakiet lub napisz w sprawie indywidualnego projektu.</p>
-            
-            <form action="https://api.web3forms.com/submit" method="POST">
-                <input type="hidden" name="access_key" value="df7bd377-380f-4c44-b323-35672c45dd0f">
-
-                <div class="form-group">
-                    <label>Interesujący Cię Pakiet / Usługa</label>
-                    <select name="selected_plan" id="formPlanSelect" required style="background: #080c14; color: #fff;">
-                        <option value="" disabled selected>-- Wybierz z listy --</option>
-                        
-                        <optgroup label="Jednorazowe Tworzenie Stron" style="background: #04101e; color: #00d2ff; font-weight: bold;">
-                            <option value="Wizytówka / One-Page (500 zł)" style="background: #030a14; color: #f1f5f9;">Wizytówka / One-Page (500 zł)</option>
-                            <option value="Landing Page / Biznes (1200 zł)" style="background: #030a14; color: #f1f5f9;">Landing Page / Biznes (1200 zł)</option>
-                            <option value="Sklep / Wizytówka PRO (2200 zł)" style="background: #030a14; color: #f1f5f9;">Sklep / Wizytówka PRO (2200 zł)</option>
-                            <option value="Pakiet Indywidualny / Dostosuj do siebie" style="background: #030a14; color: #f1f5f9;">Pakiet Indywidualny / Dostosuj do siebie</option>
-                        </optgroup>
-                        
-                        <optgroup label="Abonamenty SaaS / Opieka i Hosting" style="background: #1a0b02; color: #ff5e00; font-weight: bold;">
-                            <option value="Starter Cloud (199 zł/mc)" style="background: #0f0702; color: #f1f5f9;">Starter Cloud (199 zł/mc)</option>
-                            <option value="Business Ops (499 zł/mc)" style="background: #0f0702; color: #f1f5f9;">Business Ops (499 zł/mc)</option>
-                            <option value="Pro Support (999 zł/mc)" style="background: #0f0702; color: #f1f5f9;">Pro Support (999 zł/mc)</option>
-                        </optgroup>
-                    </select>
-                </div>
-                
-                <div class="form-group">
-                    <label>Imię i Nazwisko / Firma</label>
-                    <input type="text" name="name" required placeholder="Jan Kowalski">
-                </div>
-                <div class="form-group">
-                    <label>Adres E-mail</label>
-                    <input type="email" name="email" required placeholder="kontakt@domena.pl">
-                </div>
-                <div class="form-group">
-                    <label>Wiadomość / Opis Projektu</label>
-                    <textarea name="message" placeholder="Napisz, czego potrzebujesz lub podaj adres obecnej strony..."></textarea>
-                </div>
-
-                <input type="checkbox" name="botcheck" class="hidden" style="display: none;">
-
-                <button type="submit" class="btn-blue" style="width: 100%; margin-top: 0.8rem;">Wyślij wiadomość</button>
-            </form>
-        </div>
-    </section>
-
-    <!-- COOKIES BANNER -->
-    <div id="cookieBanner">
-        <p>Ta strona korzysta z plików cookies w celu zapewnienia prawidłowego działania usług oraz celów statystycznych.</p>
-        <button class="btn-primary" id="acceptCookiesBtn" style="padding: 0.45rem 1rem; font-size: 0.7rem; white-space: nowrap;">Akceptuję</button>
-    </div>
-
-    <!-- STOPKA -->
-    <footer>
-        <div class="footer-links">
-            <a id="openRegulamin">Regulamin świadczenia usług</a>
-            <a href="mailto:kontakt@devlabstudy.ovh">Kontakt e-mail</a>
-        </div>
-        <p>&copy; 2026 WebCraft Studio &bull; Część ekosystemu projektu <strong>DevLabStudy</strong>. Wszelkie prawa zastrzeżone.</p>
-    </footer>
-
-    <!-- SKRYPTY -->
-    <script>
-        const modal = document.getElementById('detailsModal');
-        const closeModal = document.getElementById('closeModal');
-        const openModalBtns = document.querySelectorAll('.open-modal-btn');
-        const selectThisPackageBtn = document.getElementById('selectThisPackageBtn');
-        const formPlanSelect = document.getElementById('formPlanSelect');
-
-        let currentPackageName = '';
-
-        openModalBtns.forEach(btn => {
-            btn.addEventListener('click', () => {
-                currentPackageName = btn.getAttribute('data-title').split(' (')[0];
-                
-                document.getElementById('modalTitle').textContent = btn.getAttribute('data-title');
-                document.getElementById('modalPrice').textContent = btn.getAttribute('data-price');
-                document.getElementById('modalDesc').textContent = btn.getAttribute('data-desc');
-
-                const includedList = document.getElementById('modalIncluded');
-                includedList.innerHTML = '';
-                btn.getAttribute('data-included').split(', ').forEach(item => {
-                    const li = document.createElement('li');
-                    li.textContent = item;
-                    includedList.appendChild(li);
-                });
-
-                const excludedList = document.getElementById('modalExcluded');
-                excludedList.innerHTML = '';
-                btn.getAttribute('data-excluded').split(', ').forEach(item => {
-                    const li = document.createElement('li');
-                    li.textContent = item;
-                    excludedList.appendChild(li);
-                });
-
-                modal.style.display = 'flex';
-            });
-        });
-
-        closeModal.addEventListener('click', () => { modal.style.display = 'none'; });
-        window.addEventListener('click', (e) => { if (e.target === modal) modal.style.display = 'none'; });
-
-        selectThisPackageBtn.addEventListener('click', () => {
-            modal.style.display = 'none';
-            for (let option of formPlanSelect.options) {
-                if (option.value.includes(currentPackageName)) {
-                    formPlanSelect.value = option.value;
-                    break;
-                }
-            }
-            window.location.hash = '#kontakt';
-        });
-
-        const regModal = document.getElementById('regulaminModal');
-        const openRegulamin = document.getElementById('openRegulamin');
-        const closeRegulamin = document.getElementById('closeRegulamin');
-        const closeRegulaminBtn = document.getElementById('closeRegulaminBtn');
-
-        openRegulamin.addEventListener('click', (e) => {
-            e.preventDefault();
-            regModal.style.display = 'flex';
-        });
-        closeRegulamin.addEventListener('click', () => { regModal.style.display = 'none'; });
-        closeRegulaminBtn.addEventListener('click', () => { regModal.style.display = 'none'; });
-        window.addEventListener('click', (e) => { if (e.target === regModal) regModal.style.display = 'none'; });
-
-        const cookieBanner = document.getElementById('cookieBanner');
-        const acceptCookiesBtn = document.getElementById('acceptCookiesBtn');
-
-        if (localStorage.getItem('cookiesAccepted')) {
-            cookieBanner.style.display = 'none';
-        }
-
-        acceptCookiesBtn.addEventListener('click', () => {
-            localStorage.setItem('cookiesAccepted', 'true');
-            cookieBanner.style.display = 'none';
-        });
-    </script>
 </body>
 </html>
