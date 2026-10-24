@@ -173,7 +173,7 @@
         .carousel-card p { color: var(--text-muted); font-size: 0.85rem; margin-bottom: 1.5rem; line-height: 1.6; }
         .card-link-hint { font-family: var(--font-mono); font-size: 0.75rem; color: var(--accent-orange); font-weight: 700; text-transform: uppercase; }
 
-        .pricing-grid-blue { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 1.5rem; }
+        .pricing-grid-blue { display: grid; grid-template-columns: repeat(auto-fit, minmax(230px, 1fr)); gap: 1.5rem; }
         .price-card-blue {
             background: var(--bg-card); border: 1px solid var(--border-blue); border-radius: 12px;
             padding: 2rem 1.5rem; position: relative; backdrop-filter: blur(12px); display: flex; flex-direction: column; justify-content: space-between;
@@ -363,7 +363,7 @@
                     data-price="Jednorazowo: 500 zł"
                     data-desc="Idealna dla małej firmy, salonu lub eksperta potrzebującego profesjonalnej obecności w sieci."
                     data-included="Wdrożenie sprawdzonego szablonu, konfiguracja HTML/CSS/JS, responsywność na urządzeniach mobilnych, podpięcie formularza kontaktowego, podstawowe SEO"
-                    data-excluded="Brak dedykowanego autorskiego systemu CMS, Brak zaawansowanego e-commerce"
+                    data-excluded="Brak dedykowanego systemu CMS, Brak podstron dodatkowych"
                     style="width: 100%; border-color: var(--border-blue); color: #fff;">Więcej szczegółów</button>
             </div>
 
@@ -389,40 +389,40 @@
 
             <div class="price-card-blue">
                 <div>
-                    <div class="plan-name-blue">Sklep E-commerce</div>
-                    <div class="plan-price-blue">2 800 zł</div>
+                    <div class="plan-name-blue">Sklep / Wizytówka PRO</div>
+                    <div class="plan-price-blue">2 200 zł</div>
                     <ul class="plan-list-blue">
-                        <li>Sprawdzony silnik sklepowy</li>
-                        <li>Bramki płatności i kurierzy</li>
-                        <li>Panel zarządzania produktami</li>
+                        <li>Rozbudowana struktura</li>
+                        <li>Wielu podstron i sekcji</li>
+                        <li>Gotowe sekcje produktowe</li>
                     </ul>
                 </div>
                 <button class="btn-outline open-modal-btn" 
-                    data-title="Sklep E-commerce (2 800 zł)"
-                    data-price="Jednorazowo: 2 800 zł"
-                    data-desc="Kompletny sklep internetowy oparty o stabilne i bezpieczne platformy e-commerce."
-                    data-included="Konfiguracja sprawdzonej platformy sklepowej, podpięcie płatności online (Blik, PayU, Stripe), integracja z kurierami, w pełni responsywny design"
-                    data-excluded="Brak masowego wprowadzania produktów (w cenia wliczone wdrożenie do 20 sztuk)"
+                    data-title="Sklep / Wizytówka PRO (2 200 zł)"
+                    data-price="Jednorazowo: 2 200 zł"
+                    data-desc="Większa strona firmowa z dedykowanymi sekcjami i możliwością prezentacji oferty lub prostego katalogu."
+                    data-included="Rozbudowany layout wielostronicowy, sekcje katalogowe produktów/usług, integracja z social media, optymalizacja graficzna"
+                    data-excluded="Brak zaawansowanych systemów ERP"
                     style="width: 100%; border-color: var(--border-blue); color: #fff;">Więcej szczegółów</button>
             </div>
 
             <div class="price-card-blue">
                 <div>
-                    <div class="plan-name-blue">Portal / System Webowy</div>
-                    <div class="plan-price-blue">4 900 zł+</div>
+                    <div class="plan-name-blue">Pakiet Indywidualny</div>
+                    <div class="plan-price-blue">Wycena</div>
                     <ul class="plan-list-blue">
-                        <li>Dedykowana architektura</li>
-                        <li>System użytkowników i bazy</li>
-                        <li>Bezpieczne API &amp; Webhooks</li>
+                        <li>Dostosowanie do potrzeb</li>
+                        <li>Unikalne funkcjonalności</li>
+                        <li>Elastyczna wycena</li>
                     </ul>
                 </div>
                 <button class="btn-outline open-modal-btn" 
-                    data-title="Portal / System Webowy (od 4 900 zł)"
-                    data-price="Jednorazowo: od 4 900 zł"
-                    data-desc="Zaawansowane aplikacje internetowe i portale oparte na niezawodnych frameworkach."
-                    data-included="Pełna architektura systemowa, baza danych SQL/NoSQL, system logowania użytkowników, panele administracyjne, dokumentacja techniczna"
-                    data-excluded="Brak hostingu dedykowanego w cenie jednorazowej (wymaga pakietu SaaS)"
-                    style="width: 100%; border-color: var(--border-blue); color: #fff;">Więcej szczegółów</button>
+                    data-title="Pakiet Indywidualny / Dostosuj do siebie (Wycena)"
+                    data-price="Wycena indywidualna"
+                    data-desc="Potrzebujesz czegoś unikalnego? Dobierzemy funkcje dokładnie pod specyfikę Twojego biznesu."
+                    data-included="Konsultacja techniczna, dobór funkcji pod klienta, elastyczny zakres prac, indywidualny harmonogram"
+                    data-excluded="Brak stałej ceny katalogowej"
+                    style="width: 100%; border-color: var(--border-blue); color: #fff;">Dostosuj pakiet</button>
             </div>
         </div>
 
@@ -588,8 +588,8 @@
                         <optgroup label="Jednorazowe Tworzenie Stron" style="background: #04101e; color: #00d2ff; font-weight: bold;">
                             <option value="Wizytówka / One-Page (500 zł)" style="background: #030a14; color: #f1f5f9;">Wizytówka / One-Page (500 zł)</option>
                             <option value="Landing Page / Biznes (1200 zł)" style="background: #030a14; color: #f1f5f9;">Landing Page / Biznes (1200 zł)</option>
-                            <option value="Sklep E-commerce (2800 zł)" style="background: #030a14; color: #f1f5f9;">Sklep E-commerce (2800 zł)</option>
-                            <option value="Portal / System Webowy (4900 zł+)" style="background: #030a14; color: #f1f5f9;">Portal / System Webowy (4900 zł+)</option>
+                            <option value="Sklep / Wizytówka PRO (2200 zł)" style="background: #030a14; color: #f1f5f9;">Sklep / Wizytówka PRO (2200 zł)</option>
+                            <option value="Pakiet Indywidualny / Dostosuj do siebie" style="background: #030a14; color: #f1f5f9;">Pakiet Indywidualny / Dostosuj do siebie</option>
                         </optgroup>
                         
                         <optgroup label="Abonamenty SaaS / Opieka i Hosting" style="background: #1a0b02; color: #ff5e00; font-weight: bold;">
