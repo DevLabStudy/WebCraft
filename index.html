@@ -37,7 +37,6 @@
 
         .hero { max-width: 1300px; margin: 3.5rem auto 3rem auto; padding: 0 1.5rem; text-align: center; }
 
-        /* BADGE BRANDINGOWY ZE STAŁĄ POŚWIATĄ AMBIENT */
         .brand-badge {
             display: inline-flex;
             align-items: center;
@@ -54,7 +53,6 @@
             color: #fff;
             text-transform: uppercase;
             position: relative;
-            /* Stały, miękki ambient glow w kolorze pomarańczu i niebieskiego */
             box-shadow: 0 0 20px rgba(255, 94, 0, 0.3), 0 0 45px rgba(0, 210, 255, 0.15);
         }
         
@@ -66,7 +64,6 @@
         }
         .brand-badge span { color: var(--accent-orange); }
 
-        /* PRECYZYJNE GRADIENTY Z DŁUŻSZYM WYGASZANIEM */
         h1 { 
             font-size: clamp(2.2rem, 4.8vw, 4.2rem); 
             font-weight: 900; 
@@ -132,7 +129,7 @@
             padding: 1.8rem 1.5rem;
             backdrop-filter: blur(12px);
         }
-        .feature-icon { font-size: 1.8rem; margin-bottom: 1rem; display: inline-block; }
+        .feature-icon-code { font-family: var(--font-mono); font-size: 0.9rem; color: var(--accent-orange); margin-bottom: 1rem; display: inline-block; font-weight: 700; }
         .feature-card h3 { font-family: var(--font-mono); font-size: 1.05rem; color: #fff; margin-bottom: 0.6rem; }
         .feature-card p { color: var(--text-muted); font-size: 0.85rem; line-height: 1.6; }
 
@@ -226,8 +223,8 @@
         .modal-close { position: absolute; top: 1.2rem; right: 1.2rem; background: none; border: none; color: var(--text-muted); font-size: 1.4rem; cursor: pointer; }
         .details-title { font-family: var(--font-mono); font-size: 0.8rem; color: var(--accent-orange); text-transform: uppercase; margin: 1rem 0 0.4rem 0; font-weight: 700; }
         .details-list { list-style: none; display: flex; flex-direction: column; gap: 0.4rem; font-size: 0.85rem; color: var(--text-muted); font-family: var(--font-mono); }
-        .details-list.included li::before { content: "✔  "; color: #22c55e; font-weight: bold; }
-        .details-list.excluded li::before { content: "✕  "; color: #ef4444; font-weight: bold; }
+        .details-list.included li::before { content: "[OK] "; color: #22c55e; font-weight: bold; }
+        .details-list.excluded li::before { content: "[X] "; color: #ef4444; font-weight: bold; }
 
         .order-section {
             background: var(--bg-card); 
@@ -280,10 +277,10 @@
         </div>
 
         <h1>
-            <span class="h1-top">Bezkompromisowy kod</span><br>
+            <span class="h1-top">Zaufane i bezpieczne rozwiązania</span><br>
             <span>Strony oraz opieka </span><span class="h1-orange-text">twojego biznesu</span>
         </h1>
-        <p>Tworzymy szybkie, nowoczesne strony internetowe i oferujemy stałe wsparcie techniczne, hosting oraz bezpieczeństwo w przewidywalnym modelu abonamentowym.</p>
+        <p>Tworzymy nowoczesne strony oparte na sprawdzonych i bezpiecznych frameworkach oraz szablonach. Zapewniamy stałe wsparcie techniczne, stabilny hosting w chmurze i pełne bezpieczeństwo w modelu abonamentowym.</p>
         <div class="hero-btns">
             <a href="#pakiety-stron" class="btn-blue">Pakiety Stron (Jednorazowe)</a>
             <a href="#pakiety-saas" class="btn-primary">Pakiety Abonamentowe SaaS</a>
@@ -293,28 +290,28 @@
     <!-- 1. SEKCJA ZALET -->
     <section class="section-container" id="dlaczego-my">
         <div class="section-header-tag">// Dedykowana Jakość IT</div>
-        <h2 class="section-title">Dlaczego powinieneś z nami współpracować?</h2>
+        <h2 class="section-title">Dlaczego warto z nami współpracować?</h2>
         
         <div class="features-grid">
             <div class="feature-card">
-                <div class="feature-icon">⚡</div>
-                <h3>Czysty Kod &amp; Szybkość</h3>
-                <p>Tworzymy lekkie witryny pozbawione zbędnych powolnych wtyczek. Twoi klienci ładują stronę w ułamku sekundy.</p>
+                <div class="feature-icon-code">[PERF]</div>
+                <h3>Sprawdzone Szablony &amp; Szybkość</h3>
+                <p>Korzystamy z solidnych, przetestowanych baz i szablonów zoptymalizowanych pod kątem wydajności. Szybkie ładowanie i stabilność działania.</p>
             </div>
             <div class="feature-card">
-                <div class="feature-icon">🎯</div>
-                <h3>Dedykowane RWD</h3>
-                <p>Każdy projekt jest od podstaw dopasowywany pod ekrany smartfonów, tabletów oraz dużych monitorów desktopowych.</p>
+                <div class="feature-icon-code">[RWD]</div>
+                <h3>Pełna Responsywność</h3>
+                <p>Każdy projekt wdrożeniowy jest precyzyjnie dopasowany pod ekrany smartfonów, tabletów oraz monitorów desktopowych.</p>
             </div>
             <div class="feature-card">
-                <div class="feature-icon">🛡️</div>
-                <h3>Infrastruktura &amp; Serwery</h3>
-                <p>Strony opieramy o szybkie serwery w chmurze z wysoce wydajną bazą DNS, zapewniając stałą dostępność i ochronę.</p>
+                <div class="feature-icon-code">[INFRA]</div>
+                <h3>Partnerstwo i Infrastruktura</h3>
+                <p>Opieramy usługi na sprawdzonych dostawcach chmurowych, zapewniając stałą dostępność i ochronę Twojego biznesu w sieci.</p>
             </div>
             <div class="feature-card">
-                <div class="feature-icon">🤝</div>
+                <div class="feature-icon-code">[CARE]</div>
                 <h3>Stałe Wsparcie (SaaS)</h3>
-                <p>Nie zostawiamy Cię ze stroną samemu sobie. W abonamencie dbamy o kopie zapasowe, poprawki i odnowienia.</p>
+                <p>Nie zostawiamy Cię ze stroną samemu sobie. W abonamencie dbamy o regularne kopie zapasowe, aktualizacje i bezpieczny hosting.</p>
             </div>
         </div>
     </section>
@@ -331,7 +328,7 @@
                     <h3>ArtFocus Studio</h3>
                     <p>Minimalistyczny serwis wizytówkowy ze zintegrowanym systemem rezerwacji terminów i galerią ultra-HD.</p>
                 </div>
-                <div class="card-link-hint">Otwórz podstronę demo →</div>
+                <div class="card-link-hint">Otwórz podstronę demo &rarr;</div>
             </a>
 
             <a href="examples/bistro/index.html" class="carousel-card">
@@ -340,7 +337,7 @@
                     <h3>Bistro &amp; Cafe Aura</h3>
                     <p>Nowoczesny layout dedykowany branży gastronomicznej z interaktywną kartą menu oraz rezerwacją stolików.</p>
                 </div>
-                <div class="card-link-hint">Otwórz podstronę demo →</div>
+                <div class="card-link-hint">Otwórz podstronę demo &rarr;</div>
             </a>
         </div>
     </section>
@@ -356,7 +353,7 @@
                     <div class="plan-name-blue">Wizytówka / One-Page</div>
                     <div class="plan-price-blue">500 zł</div>
                     <ul class="plan-list-blue">
-                        <li>Nowoczesny responsywny layout</li>
+                        <li>Responsywny układ bazowy</li>
                         <li>Formularz kontaktowy</li>
                         <li>Optymalizacja pod mobile</li>
                     </ul>
@@ -364,9 +361,9 @@
                 <button class="btn-outline open-modal-btn" 
                     data-title="Wizytówka / One-Page (500 zł)"
                     data-price="Jednorazowo: 500 zł"
-                    data-desc="Idealna dla małej firmy, salonu lub eksperta potrzebującego obecności w sieci."
-                    data-included="Projekt graficzny strony, wdrożenie HTML/CSS/JS, responsywność na telefonach, podpięcie formularza kontaktowego, podstawowe SEO"
-                    data-excluded="Brak rozbudowanego panelu administracyjnego, Brak systemów e-commerce"
+                    data-desc="Idealna dla małej firmy, salonu lub eksperta potrzebującego profesjonalnej obecności w sieci."
+                    data-included="Wdrożenie sprawdzonego szablonu, konfiguracja HTML/CSS/JS, responsywność na urządzeniach mobilnych, podpięcie formularza kontaktowego, podstawowe SEO"
+                    data-excluded="Brak dedykowanego autorskiego systemu CMS, Brak zaawansowanego e-commerce"
                     style="width: 100%; border-color: var(--border-blue); color: #fff;">Więcej szczegółów</button>
             </div>
 
@@ -384,9 +381,9 @@
                 <button class="btn-blue open-modal-btn" 
                     data-title="Landing Page / Biznes (1 200 zł)"
                     data-price="Jednorazowo: 1 200 zł"
-                    data-desc="Zaawansowana strona nastawiona na sprzedaż, pozyskiwanie klientów i rezerwacje."
+                    data-desc="Zaawansowana strona nastawiona na sprzedaż, pozyskiwanie klientów i rezerwacje oparte na zaufanych architekturach."
                     data-included="Wszystko z pakietu Wizytówka, System rezerwacji wizyt / menu, Zaawansowane animacje, Optymalizacja szybkości (Core Web Vitals)"
-                    data-excluded="Brak dedykowanej bazy danych backendowej bez abonamentu SaaS"
+                    data-excluded="Brak dedykowanej bazy danych backendowej bez aktywnego abonamentu SaaS"
                     style="width: 100%;">Więcej szczegółów</button>
             </div>
 
@@ -395,7 +392,7 @@
                     <div class="plan-name-blue">Sklep E-commerce</div>
                     <div class="plan-price-blue">2 800 zł</div>
                     <ul class="plan-list-blue">
-                        <li>Integracja Shopify / WooCommerce</li>
+                        <li>Sprawdzony silnik sklepowy</li>
                         <li>Bramki płatności i kurierzy</li>
                         <li>Panel zarządzania produktami</li>
                     </ul>
@@ -403,9 +400,9 @@
                 <button class="btn-outline open-modal-btn" 
                     data-title="Sklep E-commerce (2 800 zł)"
                     data-price="Jednorazowo: 2 800 zł"
-                    data-desc="Kompletny sklep internetowy przygotowany do sprzedaży produktów fizycznych lub cyfrowych."
-                    data-included="Konfiguracja platformy sklepowej, podpięcie płatności online (Blik, PayU, Stripe), integracja z firmami kurierskimi, responsywny design"
-                    data-excluded="Brak wprowadzania masowego produktów (w cenie do 20 sztuk)"
+                    data-desc="Kompletny sklep internetowy oparty o stabilne i bezpieczne platformy e-commerce."
+                    data-included="Konfiguracja sprawdzonej platformy sklepowej, podpięcie płatności online (Blik, PayU, Stripe), integracja z kurierami, w pełni responsywny design"
+                    data-excluded="Brak masowego wprowadzania produktów (w cenia wliczone wdrożenie do 20 sztuk)"
                     style="width: 100%; border-color: var(--border-blue); color: #fff;">Więcej szczegółów</button>
             </div>
 
@@ -416,22 +413,22 @@
                     <ul class="plan-list-blue">
                         <li>Dedykowana architektura</li>
                         <li>System użytkowników i bazy</li>
-                        <li>Zaawansowane API &amp; Webhooks</li>
+                        <li>Bezpieczne API &amp; Webhooks</li>
                     </ul>
                 </div>
                 <button class="btn-outline open-modal-btn" 
                     data-title="Portal / System Webowy (od 4 900 zł)"
                     data-price="Jednorazowo: od 4 900 zł"
-                    data-desc="Zaawansowane aplikacje internetowe i portale dedykowane dla wymagających projektów."
-                    data-included="Pełna architektura systemowa, baza danych SQL/NoSQL, system logowania użytkowników, panele administracyjne, dokumentacja API"
-                    data-excluded="Brak hostingu dedykowanego w cenie jednorazowej"
+                    data-desc="Zaawansowane aplikacje internetowe i portale oparte na niezawodnych frameworkach."
+                    data-included="Pełna architektura systemowa, baza danych SQL/NoSQL, system logowania użytkowników, panele administracyjne, dokumentacja techniczna"
+                    data-excluded="Brak hostingu dedykowanego w cenie jednorazowej (wymaga pakietu SaaS)"
                     style="width: 100%; border-color: var(--border-blue); color: #fff;">Więcej szczegółów</button>
             </div>
         </div>
 
         <div style="text-align: center; margin-top: 2.5rem;">
             <a href="pakiety-jednorazowe.html" class="btn-blue" style="text-decoration: none;">
-                📊 Otwórz Pełną Tabelę Porównawczną Pakietów Jednorazowych →
+                📊 Otwórz Pełną Tabelę Porównawczą Pakietów Jednorazowych &rarr;
             </a>
         </div>
     </section>
@@ -455,7 +452,7 @@
                 <button class="btn-outline open-modal-btn" 
                     data-title="Starter Cloud (199 zł / mc)"
                     data-price="199 zł / miesiąc"
-                    data-desc="Podstawowy pakiet bezobsługowego utrzymania strony dla małych firm."
+                    data-desc="Podstawowy pakiet bezobsługowego utrzymania strony i bezpiecznego hostingu."
                     data-included="Hosting w chmurze SSD (10 GB), Certyfikat SSL, Miesięczny backup, Wprowadzanie poprawek tekstów do 2h w miesiącu"
                     data-excluded="Brak ochrony WAF przed atakami, Brak odnowienia domeny w cenie"
                     style="width: 100%; margin-top: 1.2rem;">Więcej szczegółów</button>
@@ -475,7 +472,7 @@
                 <button class="btn-primary open-modal-btn" 
                     data-title="Business Ops (499 zł / mc)"
                     data-price="499 zł / miesiąc"
-                    data-desc="Kompleksowa opieka techniczna i wsparcie wydajnościowe dla sklepów i firm."
+                    data-desc="Kompleksowa opieka techniczna i wydajnościowe wsparcie dla firm oparte na zewnętrznych, stabilnych zasobach partnera."
                     data-included="Hosting NVMe (50 GB), SSL, Cotygodniowy backup, Zapora WAF przeciw atakom, Wdrożenia do 5h/mc, Odnowienie domeny .pl w cenie, Dostęp do środowiska Staging"
                     data-excluded="Brak dedykowanego serwera izolowanego"
                     style="width: 100%; margin-top: 1.2rem;">Więcej szczegółów</button>
@@ -494,7 +491,7 @@
                 <button class="btn-outline open-modal-btn" 
                     data-title="Pro Support (999 zł / mc)"
                     data-price="999 zł / miesiąc"
-                    data-desc="Dla wymagających projektów potrzebujących wysokich zasobów i natychmiastowej reakcji."
+                    data-desc="Dla wymagających projektów potrzebujących dedykowanych zasobów VPS i natychmiastowej reakcji technicznej."
                     data-included="Dedykowana instancja VPS NVMe (200 GB), Codzienny backup, Ochrona Anti-DDoS i BotGuard, Pakiet 12h na rozwój w miesiącu, SLA reakcji do 4h, Kwartalny audyt bezpieczeństwa"
                     data-excluded="Niewykorzystane godziny nie przechodzą na kolejny miesiąc"
                     style="width: 100%; margin-top: 1.2rem;">Więcej szczegółów</button>
@@ -503,7 +500,7 @@
 
         <div style="text-align: center; margin-top: 2.5rem;">
             <a href="pakiety-saas.html" class="btn-outline" style="border-color: var(--accent-orange); color: var(--accent-orange); text-decoration: none;">
-                📊 Otwórz Pełną Tabelę Porównawczną Pakietów SaaS →
+                📊 Otwórz Pełną Tabelę Porównawczą Pakietów SaaS &rarr;
             </a>
         </div>
     </section>
@@ -517,17 +514,17 @@
             <div class="step-card">
                 <div class="step-number">01</div>
                 <h4>Konsultacja &amp; Wycena</h4>
-                <p>Omawiamy Twoje potrzeby, dobieramy pakiet i ustalamy szczegóły wdrożenia bez ukrytych opłat.</p>
+                <p>Omawiamy Twoje potrzeby, dobieramy sprawdzony szablon i optymalne rozwiązanie bez ukrytych kosztów.</p>
             </div>
             <div class="step-card">
                 <div class="step-number">02</div>
-                <h4>Makieta &amp; Kodowanie</h4>
-                <p>Tworzymy projekt graficzny, a po jego akceptacji przechodzimy do kodowania czystego HTML/CSS.</p>
+                <h4>Konfiguracja &amp; Wdrożenie</h4>
+                <p>Dopasowujemy strukturę do Twojej marki, wdrażając bezpieczny i sprawdzony kod.</p>
             </div>
             <div class="step-card">
                 <div class="step-number">03</div>
                 <h4>Optymalizacja &amp; Testy</h4>
-                <p>Testujemy responsywność na telefonach, konfigurujemy podpięcia i optymalizujemy szybkość witryny.</p>
+                <p>Testujemy responsywność na urządzeniach, konfigurujemy połączenia oraz optymalizujemy szybkość działania witryny.</p>
             </div>
             <div class="step-card">
                 <div class="step-number">04</div>
@@ -564,8 +561,8 @@
             <h3 style="font-family: 'JetBrains Mono', monospace; font-size: 1.2rem; color: #fff; margin-bottom: 0.8rem;">Regulamin Świadczenia Usług</h3>
             <div style="font-size: 0.82rem; color: var(--text-muted); display: flex; flex-direction: column; gap: 0.8rem; max-height: 55vh; overflow-y: auto; padding-right: 5px;">
                 <p><strong>§1. Postanowienia Ogólne</strong><br>Niniejszy regulamin określa zasady korzystania z usług WebCraft Studio.</p>
-                <p><strong>§2. Rodzaje i Zakres Usług</strong><br>1. WebCraft Studio świadczy usługi tworzenia stron www oraz opieki technicznej i hostingu w abonamencie.</p>
-                <p><strong>§3. Płatności</strong><br>1. Pakiety jednorazowe opłacane są zgodnie z umową. Pakiety abonamentowe rozliczane są miesięcznie.</p>
+                <p><strong>§2. Rodzaje i Zakres Usług</strong><br>1. WebCraft Studio świadczy usługi tworzenia stron w oparciu o sprawdzone rozwiązania oraz opieki technicznej i hostingu w abonamencie.</p>
+                <p><strong>§3. Płatności</strong><br>1. Pakiety jednorazowe opłacane są zgodnie z umową. Pakiety abonamentowe rozliczane są cyklicznie.</p>
             </div>
             <div style="margin-top: 1.2rem;">
                 <button class="btn-primary" id="closeRegulaminBtn" style="width: 100%;">Rozumiem i zamykam</button>
@@ -588,14 +585,14 @@
                     <select name="selected_plan" id="formPlanSelect" required style="background: #080c14; color: #fff;">
                         <option value="" disabled selected>-- Wybierz z listy --</option>
                         
-                        <optgroup label="🔵 Jednorazowe Tworzenie Stron" style="background: #04101e; color: #00d2ff; font-weight: bold;">
+                        <optgroup label="Jednorazowe Tworzenie Stron" style="background: #04101e; color: #00d2ff; font-weight: bold;">
                             <option value="Wizytówka / One-Page (500 zł)" style="background: #030a14; color: #f1f5f9;">Wizytówka / One-Page (500 zł)</option>
                             <option value="Landing Page / Biznes (1200 zł)" style="background: #030a14; color: #f1f5f9;">Landing Page / Biznes (1200 zł)</option>
                             <option value="Sklep E-commerce (2800 zł)" style="background: #030a14; color: #f1f5f9;">Sklep E-commerce (2800 zł)</option>
                             <option value="Portal / System Webowy (4900 zł+)" style="background: #030a14; color: #f1f5f9;">Portal / System Webowy (4900 zł+)</option>
                         </optgroup>
                         
-                        <optgroup label="🟠 Abonamenty SaaS / Opieka i Hosting" style="background: #1a0b02; color: #ff5e00; font-weight: bold;">
+                        <optgroup label="Abonamenty SaaS / Opieka i Hosting" style="background: #1a0b02; color: #ff5e00; font-weight: bold;">
                             <option value="Starter Cloud (199 zł/mc)" style="background: #0f0702; color: #f1f5f9;">Starter Cloud (199 zł/mc)</option>
                             <option value="Business Ops (499 zł/mc)" style="background: #0f0702; color: #f1f5f9;">Business Ops (499 zł/mc)</option>
                             <option value="Pro Support (999 zł/mc)" style="background: #0f0702; color: #f1f5f9;">Pro Support (999 zł/mc)</option>
