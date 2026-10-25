@@ -10,7 +10,7 @@
     <style>
         :root {
             --bg-base: #030305;
-            --bg-card: rgba(8, 12, 20, 0.9);
+            --bg-card: rgba(8, 12, 20, 0.95);
             --border-subtle: rgba(255, 94, 0, 0.15);
             --border-blue: rgba(0, 210, 255, 0.2);
             --accent-orange: #ff5e00;
@@ -199,11 +199,11 @@
         @media(max-width: 768px) { .portfolio-grid { grid-template-columns: 1fr; } }
 
         /* ==========================================================================
-           EFEKT TECHNICZNY KAFLEK: WIĘKSZA SKALA (1.08) + WĄŻ ORAZ POPRAWIONE ZNACZNIKI
+           POPRAWIONY EFEKT KAFLEK (PRAWIDŁOWY HITBOX + WĄŻ + SKALA 1.08)
            ========================================================================== */
         @keyframes borderTrace {
-            0% { transform: rotate(0deg); }
-            100% { transform: rotate(360deg); }
+            0% { transform: translate(-50%, -50%) rotate(0deg); }
+            100% { transform: translate(-50%, -50%) rotate(360deg); }
         }
 
         .tech-card {
@@ -216,19 +216,22 @@
             flex-direction: column; 
             justify-content: space-between; 
             position: relative; 
-            overflow: visible; /* Ważne, aby znaczniki mogły wystawać poza obrys */
+            overflow: hidden; /* Poprawia hitbox: uniemożliwia wykraczanie poza obrys */
             backdrop-filter: blur(14px); 
             transition: transform 0.35s cubic-bezier(0.15, 0.85, 0.35, 1.2), box-shadow 0.35s ease, border-color 0.35s ease;
             box-shadow: 0 10px 30px rgba(0,0,0,0.6);
             z-index: 1;
         }
 
+        /* Kontener węża zamknięty wewnątrz karty z idealnym pozycjonowaniem */
         .tech-card::before {
             content: '';
             position: absolute;
-            top: -50%; left: -50%; width: 200%; height: 200%;
+            top: 50%; left: 50%;
+            width: 200%; height: 200%;
+            transform: translate(-50%, -50%);
             background: conic-gradient(transparent, transparent, transparent, var(--trace-color));
-            animation: borderTrace 3s linear infinite;
+            animation: borderTrace 3.5s linear infinite;
             opacity: 0;
             transition: opacity 0.3s ease;
             z-index: -2;
@@ -241,7 +244,6 @@
             background: #060911;
             border-radius: 13px;
             z-index: -1;
-            transition: background 0.3s ease;
         }
 
         .carousel-card, .price-card {
@@ -253,7 +255,6 @@
             --trace-color: var(--accent-blue);
         }
 
-        /* Znacznie mocniejsze powiększenie (scale 1.08) */
         .tech-card:hover {
             transform: translateY(-10px) scale(1.08);
             z-index: 50;
@@ -294,7 +295,7 @@
             position: absolute; top: -12px; left: 50%; transform: translateX(-50%);
             background: var(--accent-blue); color: #030305; font-family: var(--font-mono);
             font-size: 0.62rem; font-weight: 800; padding: 4px 14px; border-radius: 20px; text-transform: uppercase;
-            z-index: 20; /* Wyższa warstwa, żeby wąż nie przykrywał tekstu w znaczniku */
+            z-index: 20;
             box-shadow: 0 4px 15px rgba(0, 210, 255, 0.4);
         }
         .plan-name-blue { font-family: var(--font-mono); font-size: 1.05rem; color: #fff; margin-bottom: 0.4rem; }
@@ -311,7 +312,7 @@
             position: absolute; top: -12px; left: 50%; transform: translateX(-50%);
             background: var(--accent-orange); color: #030305; font-family: var(--font-mono);
             font-size: 0.62rem; font-weight: 800; padding: 4px 14px; border-radius: 20px; text-transform: uppercase;
-            z-index: 20; /* Wyższa warstwa, żeby wąż nie przykrywał tekstu w znaczniku */
+            z-index: 20;
             box-shadow: 0 4px 15px rgba(255, 94, 0, 0.4);
         }
         .plan-name { font-family: var(--font-mono); font-size: 1.05rem; color: #fff; margin-bottom: 0.4rem; }
