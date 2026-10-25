@@ -112,10 +112,10 @@
         }
         .btn-outline:hover { border-color: var(--accent-orange); color: var(--accent-orange); background: rgba(255, 94, 0, 0.05); }
 
-        /* NOWE STYLE DLA CIEMNYCH PRZYCISKÓW W KARTACH OFERT Z ROZŚWIETLANIEM */
-        .btn-card-dark-blue {
+        /* CIEMNE PRZYCISKI ROZŚWIETLAJĄCE SIĘ (DLA "OTWÓRZ PEŁNĄ TABELĘ...") */
+        .btn-dark-glow-blue {
             background: rgba(4, 16, 30, 0.9);
-            border: 1px solid rgba(0, 210, 255, 0.3);
+            border: 1px solid var(--accent-blue);
             color: var(--accent-blue);
             padding: 0.85rem 1.8rem;
             border-radius: 6px;
@@ -129,17 +129,16 @@
             text-align: center;
             display: inline-block;
         }
-        .btn-card-dark-blue:hover {
-            background: rgba(0, 210, 255, 0.15);
-            border-color: var(--accent-blue);
+        .btn-dark-glow-blue:hover {
+            background: rgba(0, 210, 255, 0.2);
             color: #fff;
-            box-shadow: 0 0 20px rgba(0, 210, 255, 0.4);
+            box-shadow: 0 0 25px rgba(0, 210, 255, 0.5);
             transform: translateY(-2px);
         }
 
-        .btn-card-dark-orange {
+        .btn-dark-glow-orange {
             background: rgba(30, 12, 4, 0.9);
-            border: 1px solid rgba(255, 94, 0, 0.3);
+            border: 1px solid var(--accent-orange);
             color: var(--accent-orange);
             padding: 0.85rem 1.8rem;
             border-radius: 6px;
@@ -153,11 +152,10 @@
             text-align: center;
             display: inline-block;
         }
-        .btn-card-dark-orange:hover {
-            background: rgba(255, 94, 0, 0.15);
-            border-color: var(--accent-orange);
+        .btn-dark-glow-orange:hover {
+            background: rgba(255, 94, 0, 0.2);
             color: #fff;
-            box-shadow: 0 0 20px rgba(255, 94, 0, 0.4);
+            box-shadow: 0 0 25px rgba(255, 94, 0, 0.5);
             transform: translateY(-2px);
         }
 
@@ -201,50 +199,38 @@
         .portfolio-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 1.5rem; max-width: 950px; margin: 0 auto; }
         @media(max-width: 768px) { .portfolio-grid { grid-template-columns: 1fr; } }
 
-        /* ANIMACJE PULSOWANIA, POWIĘKSZANIA I KOŁYSANIA (BUJANIA) DLA KART OFERT */
-        @keyframes cardPulseFloatBlue {
-            0% {
-                transform: translateY(0) scale(1) rotate(0deg);
-                box-shadow: 0 10px 30px rgba(0, 0, 0, 0.6), 0 0 15px rgba(0, 210, 255, 0.15);
-            }
-            50% {
-                transform: translateY(-6px) scale(1.025) rotate(0.4deg);
-                box-shadow: 0 18px 45px rgba(0, 0, 0, 0.8), 0 0 35px rgba(0, 210, 255, 0.45);
-            }
-            100% {
-                transform: translateY(-4px) scale(1.02) rotate(-0.3deg);
-                box-shadow: 0 15px 40px rgba(0, 0, 0, 0.75), 0 0 30px rgba(0, 210, 255, 0.35);
-            }
+        /* ANIMACJE BUJANIA I POWIĘKSZANIA DLA KART OFERT (NACHODZENIE NA POZOSTAŁE) */
+        @keyframes cardRockingBlue {
+            0% { transform: translateY(0) scale(1) rotate(0deg); }
+            25% { transform: translateY(-8px) scale(1.04) rotate(0.6deg); }
+            50% { transform: translateY(-6px) scale(1.035) rotate(-0.5deg); }
+            75% { transform: translateY(-9px) scale(1.045) rotate(0.4deg); }
+            100% { transform: translateY(-7px) scale(1.04) rotate(-0.3deg); }
         }
 
-        @keyframes cardPulseFloatOrange {
-            0% {
-                transform: translateY(0) scale(1) rotate(0deg);
-                box-shadow: 0 10px 30px rgba(0, 0, 0, 0.6), 0 0 15px rgba(255, 94, 0, 0.15);
-            }
-            50% {
-                transform: translateY(-6px) scale(1.025) rotate(0.4deg);
-                box-shadow: 0 18px 45px rgba(0, 0, 0, 0.8), 0 0 35px rgba(255, 94, 0, 0.45);
-            }
-            100% {
-                transform: translateY(-4px) scale(1.02) rotate(-0.3deg);
-                box-shadow: 0 15px 40px rgba(0, 0, 0, 0.75), 0 0 30px rgba(255, 94, 0, 0.35);
-            }
+        @keyframes cardRockingOrange {
+            0% { transform: translateY(0) scale(1) rotate(0deg); }
+            25% { transform: translateY(-8px) scale(1.04) rotate(0.6deg); }
+            50% { transform: translateY(-6px) scale(1.035) rotate(-0.5deg); }
+            75% { transform: translateY(-9px) scale(1.045) rotate(0.4deg); }
+            100% { transform: translateY(-7px) scale(1.04) rotate(-0.3deg); }
         }
 
         .carousel-card {
             background: var(--bg-card); border: 1px solid var(--border-subtle); border-radius: 12px;
             padding: 2rem 1.5rem; text-decoration: none; color: inherit; display: flex;
             flex-direction: column; justify-content: space-between; position: relative; overflow: hidden;
-            backdrop-filter: blur(12px); transition: all 0.35s cubic-bezier(0.15, 0.85, 0.35, 1.2); box-shadow: 0 10px 30px rgba(0,0,0,0.6);
+            backdrop-filter: blur(12px); transition: all 0.3s ease; box-shadow: 0 10px 30px rgba(0,0,0,0.6);
         }
         .carousel-card::before {
             content: ''; position: absolute; top: 0; left: 0; width: 3px; height: 100%;
             background: var(--accent-orange); opacity: 0.6; transition: opacity 0.3s;
         }
         .carousel-card:hover { 
-            border-color: rgba(255,94,0,0.6); 
-            animation: cardPulseFloatOrange 3.5s ease-in-out infinite alternate;
+            border-color: rgba(255,94,0,0.8); 
+            z-index: 10;
+            animation: cardRockingOrange 2.8s ease-in-out infinite alternate;
+            box-shadow: 0 20px 50px rgba(0,0,0,0.85);
         }
         .carousel-card:hover::before { opacity: 1; }
         .carousel-card .tag {
@@ -260,11 +246,13 @@
         .price-card-blue {
             background: var(--bg-card); border: 1px solid var(--border-blue); border-radius: 12px;
             padding: 2rem 1.5rem; position: relative; backdrop-filter: blur(12px); display: flex; flex-direction: column; justify-content: space-between;
-            transition: all 0.35s cubic-bezier(0.15, 0.85, 0.35, 1.2); box-shadow: 0 10px 30px rgba(0,0,0,0.6);
+            transition: all 0.3s ease; box-shadow: 0 10px 30px rgba(0,0,0,0.6);
         }
         .price-card-blue:hover {
             border-color: var(--accent-blue);
-            animation: cardPulseFloatBlue 3.5s ease-in-out infinite alternate;
+            z-index: 10;
+            animation: cardRockingBlue 2.8s ease-in-out infinite alternate;
+            box-shadow: 0 20px 50px rgba(0,0,0,0.85);
         }
         .price-card-blue.featured {
             border-color: var(--accent-blue); box-shadow: 0 0 30px rgba(0, 210, 255, 0.12);
@@ -284,11 +272,13 @@
         .price-card {
             background: var(--bg-card); border: 1px solid var(--border-subtle); border-radius: 12px;
             padding: 2rem 1.5rem; position: relative; backdrop-filter: blur(12px); display: flex; flex-direction: column; justify-content: space-between;
-            transition: all 0.35s cubic-bezier(0.15, 0.85, 0.35, 1.2); box-shadow: 0 10px 30px rgba(0,0,0,0.6);
+            transition: all 0.3s ease; box-shadow: 0 10px 30px rgba(0,0,0,0.6);
         }
         .price-card:hover {
             border-color: var(--accent-orange);
-            animation: cardPulseFloatOrange 3.5s ease-in-out infinite alternate;
+            z-index: 10;
+            animation: cardRockingOrange 2.8s ease-in-out infinite alternate;
+            box-shadow: 0 20px 50px rgba(0,0,0,0.85);
         }
         .price-card.featured {
             border-color: var(--accent-orange); box-shadow: 0 0 35px rgba(255, 94, 0, 0.12);
@@ -451,13 +441,13 @@
                         <li>Optymalizacja pod mobile</li>
                     </ul>
                 </div>
-                <button class="btn-card-dark-blue open-modal-btn" 
+                <button class="btn-outline open-modal-btn" 
                     data-title="Wizytówka / One-Page (500 zł)"
                     data-price="Jednorazowo: 500 zł"
                     data-desc="Idealna dla małej firmy, salonu lub eksperta potrzebującego profesjonalnej obecności w sieci."
                     data-included="Wdrożenie sprawdzonego szablonu, konfiguracja HTML/CSS/JS, responsywność na urządzeniach mobilnych, podpięcie formularza kontaktowego, podstawowe SEO"
                     data-excluded="Brak dedykowanego systemu CMS, Brak podstron dodatkowych"
-                    style="width: 100%;">Więcej szczegółów</button>
+                    style="width: 100%; border-color: var(--border-blue); color: #fff;">Więcej szczegółów</button>
             </div>
 
             <div class="price-card-blue featured">
@@ -471,7 +461,7 @@
                         <li>System rezerwacji / menu</li>
                     </ul>
                 </div>
-                <button class="btn-card-dark-blue open-modal-btn" 
+                <button class="btn-blue open-modal-btn" 
                     data-title="Landing Page / Biznes (1 200 zł)"
                     data-price="Jednorazowo: 1 200 zł"
                     data-desc="Zaawansowana strona nastawiona na sprzedaż, pozyskiwanie klientów i rezerwacje oparte na zaufanych architekturach."
@@ -490,13 +480,13 @@
                         <li>Gotowe sekcje produktowe</li>
                     </ul>
                 </div>
-                <button class="btn-card-dark-blue open-modal-btn" 
+                <button class="btn-outline open-modal-btn" 
                     data-title="Sklep / Wizytówka PRO (2 200 zł)"
                     data-price="Jednorazowo: 2 200 zł"
                     data-desc="Większa strona firmowa z dedykowanymi sekcjami i możliwością prezentacji oferty lub prostego katalogu."
                     data-included="Rozbudowany layout wielostronicowy, sekcje katalogowe produktów/usług, integracja z social media, optymalizacja graficzna"
                     data-excluded="Brak zaawansowanych systemów ERP"
-                    style="width: 100%;">Więcej szczegółów</button>
+                    style="width: 100%; border-color: var(--border-blue); color: #fff;">Więcej szczegółów</button>
             </div>
 
             <div class="price-card-blue">
@@ -509,18 +499,18 @@
                         <li>Elastyczna wycena</li>
                     </ul>
                 </div>
-                <button class="btn-card-dark-blue open-modal-btn" 
+                <button class="btn-outline open-modal-btn" 
                     data-title="Pakiet Indywidualny / Dostosuj do siebie (Wycena)"
                     data-price="Wycena indywidualna"
                     data-desc="Potrzebujesz czegoś unikalnego? Dobierzemy funkcje dokładnie pod specyfikę Twojego biznesu."
                     data-included="Konsultacja techniczna, dobór funkcji pod klienta, elastyczny zakres prac, indywidualny harmonogram"
                     data-excluded="Brak stałej ceny katalogowej"
-                    style="width: 100%;">Dostosuj pakiet</button>
+                    style="width: 100%; border-color: var(--border-blue); color: #fff;">Dostosuj pakiet</button>
             </div>
         </div>
 
         <div style="text-align: center; margin-top: 2.5rem;">
-            <a href="pakiety-jednorazowe.html" class="btn-blue" style="text-decoration: none;">
+            <a href="pakiety-jednorazowe.html" class="btn-dark-glow-blue" style="text-decoration: none;">
                 Otwórz Pełną Tabelę Porównawczą Pakietów Jednorazowych &rarr;
             </a>
         </div>
@@ -542,13 +532,13 @@
                         <li>Drobne poprawki treści (do 2h/mc)</li>
                     </ul>
                 </div>
-                <button class="btn-card-dark-orange open-modal-btn" 
+                <button class="btn-outline open-modal-btn" 
                     data-title="Starter Cloud (199 zł / mc)"
                     data-price="199 zł / miesiąc"
                     data-desc="Podstawowy pakiet bezobsługowego utrzymania strony i bezpiecznego hostingu."
                     data-included="Hosting w chmurze SSD (10 GB), Certyfikat SSL, Miesięczny backup, Wprowadzanie poprawek tekstów do 2h w miesiącu"
                     data-excluded="Brak ochrony WAF przed atakami, Brak odnowienia domeny w cenie"
-                    style="width: 100%; margin-top: 1.2rem;">Więcej szczegółów</button>
+                    style="width: 100%; margin-top: 1.2rem; border-color: var(--border-subtle); color: #fff;">Więcej szczegółów</button>
             </div>
 
             <div class="price-card featured">
@@ -562,7 +552,7 @@
                         <li>Rozbudowa i wsparcie (do 5h/mc)</li>
                     </ul>
                 </div>
-                <button class="btn-card-dark-orange open-modal-btn" 
+                <button class="btn-primary open-modal-btn" 
                     data-title="Business Ops (499 zł / mc)"
                     data-price="499 zł / miesiąc"
                     data-desc="Kompleksowa opieka techniczna i wydajnościowe wsparcie dla firm oparte na zewnętrznych, stabilnych zasobach partnera."
@@ -581,18 +571,18 @@
                         <li>Pakiet rozbudowy modułów (do 12h/mc)</li>
                     </ul>
                 </div>
-                <button class="btn-card-dark-orange open-modal-btn" 
+                <button class="btn-outline open-modal-btn" 
                     data-title="Pro Support (999 zł / mc)"
                     data-price="999 zł / miesiąc"
                     data-desc="Dla wymagających projektów potrzebujących dedykowanych zasobów VPS i natychmiastowej reakcji technicznej."
                     data-included="Dedykowana instancja VPS NVMe (200 GB), Codzienny backup, Ochrona Anti-DDoS i BotGuard, Pakiet 12h na rozwój w miesiącu, SLA reakcji do 4h, Kwartalny audyt bezpieczeństwa"
                     data-excluded="Niewykorzystane godziny nie przechodzą na kolejny miesiąc"
-                    style="width: 100%; margin-top: 1.2rem;">Więcej szczegółów</button>
+                    style="width: 100%; margin-top: 1.2rem; border-color: var(--border-subtle); color: #fff;">Więcej szczegółów</button>
             </div>
         </div>
 
         <div style="text-align: center; margin-top: 2.5rem;">
-            <a href="pakiety-saas.html" class="btn-outline" style="border-color: var(--accent-orange); color: var(--accent-orange); text-decoration: none;">
+            <a href="pakiety-saas.html" class="btn-dark-glow-orange" style="text-decoration: none;">
                 Otwórz Pełną Tabelę Porównawczą Pakietów SaaS &rarr;
             </a>
         </div>
