@@ -199,11 +199,11 @@
         @media(max-width: 768px) { .portfolio-grid { grid-template-columns: 1fr; } }
 
         /* ==========================================================================
-           PERFEKCYJNY EFEKT KAFLEK: OVERFLOW VISIBLE + WEWNĘTRZNA MASKA WĘŻA
+           PERFEKCYJNY EFEKT KAFLEK: PRAWIDŁOWY HITBOX + RAMKA + SKALA 1.08
            ========================================================================== */
         @keyframes borderTrace {
-            0% { transform: translate(-50%, -50%) rotate(0deg); }
-            100% { transform: translate(-50%, -50%) rotate(360deg); }
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
         }
 
         .tech-card {
@@ -216,26 +216,25 @@
             flex-direction: column; 
             justify-content: space-between; 
             position: relative; 
-            overflow: visible; /* Pozwala wystawać znacznikom ponad kartę */
+            overflow: visible; /* Pozwala znacznikom wystawać u góry */
             backdrop-filter: blur(14px); 
             transition: transform 0.35s cubic-bezier(0.15, 0.85, 0.35, 1.2), box-shadow 0.35s ease, border-color 0.35s ease;
             box-shadow: 0 10px 30px rgba(0,0,0,0.6);
             z-index: 1;
-            margin-top: 15px; /* Margines od góry na wysunięty znacznik */
+            margin-top: 20px; /* Przestrzeń na wysunięty znacznik */
         }
 
-        /* Wewnętrzny kontener animacji węża z clip-path / border-radius, aby nie ucinać znaczników */
         .tech-card::before {
             content: '';
             position: absolute;
-            top: 50%; left: 50%;
-            width: 250%; height: 250%;
-            transform: translate(-50%, -50%);
-            background: conic-gradient(transparent, transparent, transparent, var(--trace-color));
-            animation: borderTrace 3.5s linear infinite;
+            inset: -2px;
+            border-radius: 16px;
+            background: conic-gradient(from 0deg at 50% 50%, transparent 0deg, transparent 270deg, var(--trace-color) 360deg);
+            animation: borderTrace 3s linear infinite;
             opacity: 0;
             transition: opacity 0.3s ease;
             z-index: -2;
+            pointer-events: none;
         }
 
         .tech-card::after {
@@ -263,7 +262,7 @@
 
         .carousel-card:hover, .price-card:hover {
             border-color: rgba(255, 94, 0, 0.9);
-            box-shadow: 0 0 55px rgba(255, 94, 0, 0.45), 0 25px 60px rgba(0,0,0,0.95);
+            box-shadow: 0 0 45px rgba(255, 94, 0, 0.35), 0 25px 60px rgba(0,0,0,0.95);
         }
         .carousel-card:hover::before, .price-card:hover::before {
             opacity: 1;
@@ -271,7 +270,7 @@
 
         .price-card-blue:hover {
             border-color: rgba(0, 210, 255, 0.9);
-            box-shadow: 0 0 55px rgba(0, 210, 255, 0.45), 0 25px 60px rgba(0,0,0,0.95);
+            box-shadow: 0 0 45px rgba(0, 210, 255, 0.35), 0 25px 60px rgba(0,0,0,0.95);
         }
         .price-card-blue:hover::before {
             opacity: 1;
