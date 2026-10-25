@@ -199,7 +199,7 @@
         @media(max-width: 768px) { .portfolio-grid { grid-template-columns: 1fr; } }
 
         /* ==========================================================================
-           EFEKT TECHNICZNY KAFLEK: SILNE POWIĘKSZENIE, POŚWIATA I "WIJĄCY SIĘ WĄŻ" (BORDER TRACE)
+           EFEKT TECHNICZNY KAFLEK: WIĘKSZA SKALA (1.08) + WĄŻ ORAZ POPRAWIONE ZNACZNIKI
            ========================================================================== */
         @keyframes borderTrace {
             0% { transform: rotate(0deg); }
@@ -216,7 +216,7 @@
             flex-direction: column; 
             justify-content: space-between; 
             position: relative; 
-            overflow: hidden;
+            overflow: visible; /* Ważne, aby znaczniki mogły wystawać poza obrys */
             backdrop-filter: blur(14px); 
             transition: transform 0.35s cubic-bezier(0.15, 0.85, 0.35, 1.2), box-shadow 0.35s ease, border-color 0.35s ease;
             box-shadow: 0 10px 30px rgba(0,0,0,0.6);
@@ -253,22 +253,23 @@
             --trace-color: var(--accent-blue);
         }
 
+        /* Znacznie mocniejsze powiększenie (scale 1.08) */
         .tech-card:hover {
-            transform: translateY(-8px) scale(1.06);
-            z-index: 100;
+            transform: translateY(-10px) scale(1.08);
+            z-index: 50;
         }
 
         .carousel-card:hover, .price-card:hover {
-            border-color: rgba(255, 94, 0, 0.8);
-            box-shadow: 0 0 45px rgba(255, 94, 0, 0.35), 0 20px 50px rgba(0,0,0,0.9);
+            border-color: rgba(255, 94, 0, 0.9);
+            box-shadow: 0 0 55px rgba(255, 94, 0, 0.45), 0 25px 60px rgba(0,0,0,0.95);
         }
         .carousel-card:hover::before, .price-card:hover::before {
             opacity: 1;
         }
 
         .price-card-blue:hover {
-            border-color: rgba(0, 210, 255, 0.8);
-            box-shadow: 0 0 45px rgba(0, 210, 255, 0.35), 0 20px 50px rgba(0,0,0,0.9);
+            border-color: rgba(0, 210, 255, 0.9);
+            box-shadow: 0 0 55px rgba(0, 210, 255, 0.45), 0 25px 60px rgba(0,0,0,0.95);
         }
         .price-card-blue:hover::before {
             opacity: 1;
@@ -290,10 +291,11 @@
             background: linear-gradient(180deg, rgba(0, 210, 255, 0.04) 0%, rgba(8, 12, 20, 0.95) 100%);
         }
         .popular-tag-blue {
-            position: absolute; top: -11px; left: 50%; transform: translateX(-50%);
+            position: absolute; top: -12px; left: 50%; transform: translateX(-50%);
             background: var(--accent-blue); color: #030305; font-family: var(--font-mono);
-            font-size: 0.62rem; font-weight: 800; padding: 3px 12px; border-radius: 20px; text-transform: uppercase;
-            z-index: 5;
+            font-size: 0.62rem; font-weight: 800; padding: 4px 14px; border-radius: 20px; text-transform: uppercase;
+            z-index: 20; /* Wyższa warstwa, żeby wąż nie przykrywał tekstu w znaczniku */
+            box-shadow: 0 4px 15px rgba(0, 210, 255, 0.4);
         }
         .plan-name-blue { font-family: var(--font-mono); font-size: 1.05rem; color: #fff; margin-bottom: 0.4rem; }
         .plan-price-blue { font-family: var(--font-mono); font-size: 1.85rem; font-weight: 800; color: var(--accent-blue); margin-bottom: 1rem; }
@@ -306,17 +308,18 @@
             background: linear-gradient(180deg, rgba(255, 94, 0, 0.05) 0%, rgba(8, 12, 20, 0.95) 100%);
         }
         .popular-tag {
-            position: absolute; top: -11px; left: 50%; transform: translateX(-50%);
+            position: absolute; top: -12px; left: 50%; transform: translateX(-50%);
             background: var(--accent-orange); color: #030305; font-family: var(--font-mono);
-            font-size: 0.62rem; font-weight: 800; padding: 3px 12px; border-radius: 20px; text-transform: uppercase;
-            z-index: 5;
+            font-size: 0.62rem; font-weight: 800; padding: 4px 14px; border-radius: 20px; text-transform: uppercase;
+            z-index: 20; /* Wyższa warstwa, żeby wąż nie przykrywał tekstu w znaczniku */
+            box-shadow: 0 4px 15px rgba(255, 94, 0, 0.4);
         }
         .plan-name { font-family: var(--font-mono); font-size: 1.05rem; color: #fff; margin-bottom: 0.4rem; }
         .plan-price { font-family: var(--font-mono); font-size: 1.85rem; font-weight: 800; color: var(--accent-orange); margin-bottom: 1rem; }
         .plan-list { list-style: none; display: flex; flex-direction: column; gap: 0.5rem; font-size: 0.82rem; color: var(--text-muted); font-family: var(--font-mono); margin-bottom: 1.5rem; }
         .plan-list li::before { content: "› "; color: var(--accent-orange); font-weight: bold; font-size: 1rem; }
 
-        /* SEKCJA WSPÓŁPRACY / PARTNERSTWA (W STYLU HOMELAB / PROVIDER) */
+        /* SEKCJA WSPÓŁPRACY / PARTNERSTWA */
         .collab-banner {
             background: linear-gradient(135deg, rgba(8, 12, 20, 0.95) 0%, rgba(15, 23, 42, 0.95) 100%);
             border: 1px solid rgba(0, 210, 255, 0.3);
