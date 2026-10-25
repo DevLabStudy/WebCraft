@@ -199,7 +199,7 @@
         @media(max-width: 768px) { .portfolio-grid { grid-template-columns: 1fr; } }
 
         /* ==========================================================================
-           POPRAWIONY EFEKT KAFLEK (PRAWIDŁOWY HITBOX + WĄŻ + SKALA 1.08)
+           PERFEKCYJNY EFEKT KAFLEK: OVERFLOW VISIBLE + WEWNĘTRZNA MASKA WĘŻA
            ========================================================================== */
         @keyframes borderTrace {
             0% { transform: translate(-50%, -50%) rotate(0deg); }
@@ -216,19 +216,20 @@
             flex-direction: column; 
             justify-content: space-between; 
             position: relative; 
-            overflow: hidden; /* Poprawia hitbox: uniemożliwia wykraczanie poza obrys */
+            overflow: visible; /* Pozwala wystawać znacznikom ponad kartę */
             backdrop-filter: blur(14px); 
             transition: transform 0.35s cubic-bezier(0.15, 0.85, 0.35, 1.2), box-shadow 0.35s ease, border-color 0.35s ease;
             box-shadow: 0 10px 30px rgba(0,0,0,0.6);
             z-index: 1;
+            margin-top: 15px; /* Margines od góry na wysunięty znacznik */
         }
 
-        /* Kontener węża zamknięty wewnątrz karty z idealnym pozycjonowaniem */
+        /* Wewnętrzny kontener animacji węża z clip-path / border-radius, aby nie ucinać znaczników */
         .tech-card::before {
             content: '';
             position: absolute;
             top: 50%; left: 50%;
-            width: 200%; height: 200%;
+            width: 250%; height: 250%;
             transform: translate(-50%, -50%);
             background: conic-gradient(transparent, transparent, transparent, var(--trace-color));
             animation: borderTrace 3.5s linear infinite;
@@ -292,11 +293,12 @@
             background: linear-gradient(180deg, rgba(0, 210, 255, 0.04) 0%, rgba(8, 12, 20, 0.95) 100%);
         }
         .popular-tag-blue {
-            position: absolute; top: -12px; left: 50%; transform: translateX(-50%);
+            position: absolute; top: -14px; left: 50%; transform: translateX(-50%);
             background: var(--accent-blue); color: #030305; font-family: var(--font-mono);
-            font-size: 0.62rem; font-weight: 800; padding: 4px 14px; border-radius: 20px; text-transform: uppercase;
-            z-index: 20;
+            font-size: 0.62rem; font-weight: 800; padding: 5px 14px; border-radius: 20px; text-transform: uppercase;
+            z-index: 30;
             box-shadow: 0 4px 15px rgba(0, 210, 255, 0.4);
+            white-space: nowrap;
         }
         .plan-name-blue { font-family: var(--font-mono); font-size: 1.05rem; color: #fff; margin-bottom: 0.4rem; }
         .plan-price-blue { font-family: var(--font-mono); font-size: 1.85rem; font-weight: 800; color: var(--accent-blue); margin-bottom: 1rem; }
@@ -309,11 +311,12 @@
             background: linear-gradient(180deg, rgba(255, 94, 0, 0.05) 0%, rgba(8, 12, 20, 0.95) 100%);
         }
         .popular-tag {
-            position: absolute; top: -12px; left: 50%; transform: translateX(-50%);
+            position: absolute; top: -14px; left: 50%; transform: translateX(-50%);
             background: var(--accent-orange); color: #030305; font-family: var(--font-mono);
-            font-size: 0.62rem; font-weight: 800; padding: 4px 14px; border-radius: 20px; text-transform: uppercase;
-            z-index: 20;
+            font-size: 0.62rem; font-weight: 800; padding: 5px 14px; border-radius: 20px; text-transform: uppercase;
+            z-index: 30;
             box-shadow: 0 4px 15px rgba(255, 94, 0, 0.4);
+            white-space: nowrap;
         }
         .plan-name { font-family: var(--font-mono); font-size: 1.05rem; color: #fff; margin-bottom: 0.4rem; }
         .plan-price { font-family: var(--font-mono); font-size: 1.85rem; font-weight: 800; color: var(--accent-orange); margin-bottom: 1rem; }
