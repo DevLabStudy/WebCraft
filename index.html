@@ -214,7 +214,7 @@
         @media(max-width: 768px) { .portfolio-grid { grid-template-columns: 1fr; } }
 
         /* ==========================================================================
-           IDEALNY, PŁYNNY WĄŻ ŚWIETLNY (BEZ WYEKSOPONOWANYCH KWADRATÓW)
+           IDEALNY, PŁYNNY WĄŻ ŚWIETLNY
            ========================================================================== */
         @keyframes borderTrace {
             0% { transform: rotate(0deg); }
@@ -295,7 +295,6 @@
         .price-card-blue:hover::before {
             opacity: 1;
         }
-        /* ========================================================================== */
 
         .carousel-card .tag {
             font-family: var(--font-mono); font-size: 0.68rem; color: var(--accent-orange);
@@ -324,7 +323,7 @@
         .plan-list { list-style: none; display: flex; flex-direction: column; gap: 0.5rem; font-size: 0.82rem; color: var(--text-muted); font-family: var(--font-mono); margin-bottom: 1.5rem; }
         .plan-list li::before { content: "› "; color: var(--accent-orange); font-weight: bold; font-size: 1rem; }
 
-        /* KOMPAKTOWY BANER WSPÓŁPRACY / PARTNERSTWA */
+        /* BANER WSPÓŁPRACY */
         .collab-wrapper {
             max-width: 680px;
             margin: 0 auto 2.5rem auto;
@@ -387,7 +386,7 @@
         }
         .modal-content {
             background: var(--bg-card); border: 1px solid var(--accent-orange); border-radius: 14px;
-            max-width: 600px; width: 100%; padding: 2rem; position: relative; max-height: 90vh; overflow-y: auto;
+            max-width: 680px; width: 100%; padding: 2rem; position: relative; max-height: 90vh; overflow-y: auto;
         }
         .modal-close { position: absolute; top: 1.2rem; right: 1.2rem; background: none; border: none; color: var(--text-muted); font-size: 1.4rem; cursor: pointer; }
         .details-title { font-family: var(--font-mono); font-size: 0.8rem; color: var(--accent-orange); text-transform: uppercase; margin: 1rem 0 0.4rem 0; font-weight: 700; }
@@ -411,7 +410,6 @@
             width: 100%; padding: 0.75rem 0.9rem; border: 1px solid var(--border-blue); border-radius: 6px; background: rgba(3, 3, 5, 0.9); color: #fff; font-size: 0.9rem; font-family: inherit; transition: all 0.25s ease;
         }
         
-        /* POPRAWKA STRZAŁKI W SELECT: Odsunięcie od prawego brzegu i własna ładna ikona */
         .form-group select {
             width: 100%; 
             padding: 0.75rem 2.6rem 0.75rem 0.9rem;
@@ -434,7 +432,6 @@
         }
         .form-group textarea { resize: vertical; min-height: 110px; }
 
-        /* NOWY STYL BANERU COOKIES / RODO */
         #cookieBanner {
             display: none;
             position: fixed;
@@ -759,14 +756,46 @@
     <div class="modal-overlay" id="regulaminModal">
         <div class="modal-content">
             <button class="modal-close" id="closeRegulamin">&times;</button>
-            <h3 style="font-family: 'JetBrains Mono', monospace; font-size: 1.2rem; color: #fff; margin-bottom: 0.8rem;">Regulamin Świadczenia Usług</h3>
-            <div style="font-size: 0.82rem; color: var(--text-muted); display: flex; flex-direction: column; gap: 0.8rem; max-height: 55vh; overflow-y: auto; padding-right: 5px;">
-                <p><strong>§1. Postanowienia Ogólne</strong><br>Niniejszy regulamin określa zasady korzystania z usług WebCraft Studio.</p>
-                <p><strong>§2. Rodzaje i Zakres Usług</strong><br>1. WebCraft Studio świadczy usługi tworzenia stron w oparciu o sprawdzone rozwiązania oraz opieki technicznej i hostingu w abonamencie.</p>
-                <p><strong>§3. Płatności</strong><br>1. Pakiety jednorazowe opłacane są zgodnie z umową. Pakiety abonamentowe rozliczane są cyklicznie.</p>
+            <h3 style="font-family: 'JetBrains Mono', monospace; font-size: 1.2rem; color: #fff; margin-bottom: 0.8rem;">Regulamin Świadczenia Usług WebCraft Studio</h3>
+            
+            <div style="font-size: 0.82rem; color: var(--text-muted); display: flex; flex-direction: column; gap: 0.9rem; max-height: 55vh; overflow-y: auto; padding-right: 8px; line-height: 1.6;">
+                
+                <!-- WSTĘP / OPIS (BEZ PARAGRAFU) -->
+                <p style="color: var(--text-main); font-size: 0.85rem; border-left: 2px solid var(--accent-orange); padding-left: 10px; background: rgba(255, 94, 0, 0.04); margin-bottom: 0.4rem; padding-top: 4px; padding-bottom: 4px;">
+                    Witamy w regulaminie świadczenia usług WebCraft Studio. Zależy nam na jasnych zasadach relacji i pełnej przejrzystości na każdym etapie projektowania. Poniższy dokument definiuje standardy realizacji zleceń, obowiązki obu stron oraz warunki opieki technicznej w modelach jednorazowych i abonamentowych.
+                </p>
+
+                <p><strong>§ 1. Postanowienia Ogólne i Definicje</strong><br>
+                1. Niniejszy regulamin określa zasady korzystania z usług świadczonych przez WebCraft Studio (działającego w ramach ekosystemu DevLabStudy).<br>
+                2. Zamawiający (Klient) – osoba fizyczna, firma lub podmiot zamawiający usługę stworzenia strony internetowej lub obsługi technicznej.<br>
+                3. Wykonawca – WebCraft Studio (DevLabStudy), odpowiadający za techniczną realizację oraz wdrożenie zlecenia.</p>
+
+                <p><strong>§ 2. Zakres Usług i Realizacja Zleceń</strong><br>
+                1. Wykonawca świadczy usługi z zakresu projektowania, kodowania, optymalizacji oraz wdrażania stron internetowych na wskazanych serwerach.<br>
+                2. Przed rozpoczęciem prac Klient zobowiązany jest do dostarczenia materiałów tekstowych, graficznych oraz niezbędnych wytycznych.<br>
+                3. Wykonawca zastrzega sobie prawo do odmowy realizacji materiałów naruszających polskie prawo lub dobre obyczaje.</p>
+
+                <p><strong>§ 3. Poprawki i Akceptacja Projektu</strong><br>
+                1. W ramach pakietów jednorazowych Zamawiającemu przysługują 2 serie bezpłatnych poprawek do zaprezentowanego projektu wdrożeniowego.<br>
+                2. Poprawki wykraczające poza pierwotnie ustalony zakres lub dodatkowe funkcje wymagają osobnej wyceny i akceptacji obu stron.<br>
+                3. Ostateczny odbiór strony następuje po pisemnym (e-mail) potwierdzeniu akceptacji przez Klienta.</p>
+
+                <p><strong>§ 4. Model Abonamentowy (SaaS) i Hosting</strong><br>
+                1. Pakiety abonamentowe rozliczane są w cyklach miesięcznych.<br>
+                2. W ramach abonamentu Wykonawca zapewnia bezpieczny hosting, wykonywanie kopii zapasowych oraz instalację aktualizacji bezpieczeństwa.<br>
+                3. Brak terminowej wpłaty za abonament może skutkować tymczasowym wstrzymaniem świadczenia usług opieki oraz hostingu po uprzednim powiadomieniu.</p>
+
+                <p><strong>§ 5. Prawa Autorskie i Licencje</strong><br>
+                1. Po pełnym opłaceniu zamówienia Zamawiający otrzymuje majątkowe prawa autorskie lub licencję na użytkowanie wdrożonego serwisu internetowego.<br>
+                2. Wykonawca zachowuje prawo do umieszczenia wykonanego projektu w swoim portfolio (chyba że ustalono inaczej w umowie confidentiality/NDA).</p>
+
+                <p><strong>§ 6. Odpowiedzialność i Reklamacje</strong><br>
+                1. Wykonawca dokłada wszelkich starań, aby witryny działały ze skutecznością 99.9% w skali roku.<br>
+                2. Wszelkie uwagi dotyczące funkcjonowania witryny należy zgłaszać na adres e-mail: <code>kontakt@devlabstudy.ovh</code>. Reklamacje rozpatrywane są w ciągu 14 dni roboczych.</p>
             </div>
+
             <div style="margin-top: 1.2rem;">
-                <button class="btn-primary" id="closeRegulaminBtn" style="width: 100%;">Rozumiem i zamykam</button>
+                <button class="btn-primary" id="closeRegulaminBtn" style="width: 100%;">Rozumiem</button>
             </div>
         </div>
     </div>
@@ -774,7 +803,6 @@
     <!-- 6. FORMULARZ KONTAKTOWY I WSPÓŁPRACA -->
     <section class="section-container" id="kontakt">
         
-        <!-- KOMPAKTOWY BANER WSPÓŁPRACY / PARTNERSTWA -->
         <div class="collab-wrapper">
             <div class="collab-banner">
                 <h3>
