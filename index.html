@@ -20,8 +20,8 @@
       gtag('config', 'G-T0FHCPTREP');
     </script>
     
-    <!-- Favicon z logo WebCraft i dopiskiem by devlabstudy -->
-    <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 40 40'><rect width='40' height='40' rx='8' fill='%23030305'/><g transform='translate(8, 5) scale(0.85)'><path d='M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5' fill='none' stroke='%23ff5e00' stroke-width='2.5'/></g><text x='20' y='36' font-family='monospace' font-size='5.5' fill='%238b9bb4' text-anchor='middle' font-weight='700'>by devlabstudy</text></svg>">
+    <!-- Oryginalna favicona WebCraft -->
+    <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23ff5e00' stroke-width='2.5'><path d='M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5'/></svg>">
     
     <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;700;800&family=Inter:wght@300;400;500;600;800;900&display=swap" rel="stylesheet">
     <style>
@@ -56,30 +56,45 @@
 
         .brand-badge {
             display: inline-flex;
+            flex-direction: column;
             align-items: center;
-            gap: 10px;
+            gap: 2px;
             background: rgba(8, 12, 20, 0.95);
             border: 1px solid rgba(255, 94, 0, 0.35);
-            padding: 0.55rem 1.3rem;
-            border-radius: 50px;
+            padding: 0.6rem 1.5rem;
+            border-radius: 12px;
             margin-bottom: 2.2rem;
             font-family: var(--font-mono);
+            position: relative;
+            box-shadow: 0 0 20px rgba(255, 94, 0, 0.3), 0 0 45px rgba(0, 210, 255, 0.15);
+        }
+
+        .brand-badge-top {
+            display: flex;
+            align-items: center;
+            gap: 10px;
             font-size: 0.85rem;
             font-weight: 800;
             letter-spacing: 1px;
             color: #fff;
             text-transform: uppercase;
-            position: relative;
-            box-shadow: 0 0 20px rgba(255, 94, 0, 0.3), 0 0 45px rgba(0, 210, 255, 0.15);
         }
         
-        .brand-badge svg { 
+        .brand-badge-top svg { 
             stroke: var(--accent-orange); 
             width: 18px; 
             height: 18px; 
             filter: drop-shadow(0 0 5px rgba(255, 94, 0, 0.7)); 
         }
-        .brand-badge span { color: var(--accent-orange); }
+        .brand-badge-top span { color: var(--accent-orange); }
+
+        .brand-badge-sub {
+            font-size: 0.6rem;
+            color: var(--text-muted);
+            letter-spacing: 1.5px;
+            text-transform: uppercase;
+            font-weight: 600;
+        }
 
         h1 { 
             font-size: clamp(2.2rem, 4.8vw, 4.2rem); 
@@ -581,8 +596,11 @@
 
     <section class="hero">
         <div class="brand-badge">
-            <svg viewBox="0 0 24 24" fill="none" stroke-width="2.5"><path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"/></svg>
-            WebCraft <span>Studio</span>
+            <div class="brand-badge-top">
+                <svg viewBox="0 0 24 24" fill="none" stroke-width="2.5"><path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"/></svg>
+                WebCraft <span>Studio</span>
+            </div>
+            <div class="brand-badge-sub">by devlabstudy</div>
         </div>
 
         <h1>
