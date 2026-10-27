@@ -430,13 +430,41 @@
         }
         .form-group textarea { resize: vertical; min-height: 110px; }
 
-        /* FLOATING WHATSAPP CHAT WIDGET STYLES */
+        /* FLOATING WHATSAPP CHAT WIDGET & BUBBLE STYLES */
         .wa-widget-wrapper {
             position: fixed;
             bottom: 25px;
             right: 25px;
             z-index: 9998;
             font-family: var(--font-sans);
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .wa-rotating-bubble {
+            background: rgba(10, 15, 25, 0.95);
+            border: 1px solid rgba(255, 94, 0, 0.35);
+            color: var(--text-main);
+            padding: 10px 15px;
+            border-radius: 12px;
+            font-size: 0.8rem;
+            font-family: var(--font-mono);
+            box-shadow: 0 5px 25px rgba(0, 0, 0, 0.7);
+            max-width: 270px;
+            text-align: right;
+            cursor: pointer;
+            transition: opacity 0.4s ease, transform 0.4s ease;
+            backdrop-filter: blur(10px);
+        }
+
+        .wa-rotating-bubble span {
+            color: var(--accent-orange);
+            display: block;
+            font-size: 0.65rem;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            margin-bottom: 2px;
         }
 
         .wa-float-btn {
@@ -452,6 +480,7 @@
             cursor: pointer;
             transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
             border: none;
+            flex-shrink: 0;
         }
 
         .wa-float-btn:hover {
@@ -554,6 +583,7 @@
             box-shadow: 0 0 15px rgba(37, 211, 102, 0.4);
         }
 
+        /* BANNER COOKIES / RODO (NAPRAWIONE: display: none domyślnie) */
         #cookieBanner {
             display: none;
             position: fixed;
@@ -587,6 +617,7 @@
             .hero { margin: 2.5rem auto 2rem auto; padding: 0 1rem; }
             .section-container { padding: 0 1rem; }
             #cookieBanner { bottom: 10px; left: 10px; right: 10px; padding: 16px; }
+            .wa-rotating-bubble { display: none; }
             .wa-widget-wrapper { bottom: 15px; right: 15px; }
             .wa-chat-box { width: 280px; }
         }
@@ -1003,8 +1034,13 @@
         </div>
     </section>
 
-    <!-- FLOATING WHATSAPP CHAT WIDGET -->
+    <!-- FLOATING WHATSAPP CHAT WIDGET Z PYTANIAMI WEBCRAFT -->
     <div class="wa-widget-wrapper">
+        <div class="wa-rotating-bubble" id="waBubble" title="Kliknij, aby zapytać">
+            <span id="waBubbleCategory">// WebCraft Studio</span>
+            <span id="waBubbleText">Szukasz nowej strony dla biznesu?</span>
+        </div>
+
         <div class="wa-chat-box" id="waChatBox">
             <div class="wa-chat-header">
                 <div class="wa-avatar-status">
@@ -1020,12 +1056,13 @@
                 <div class="wa-msg-bubble">
                     Cześć! 👋 W czym możemy pomóc w kwestii Twojej strony lub serwisu?
                 </div>
-                <a href="https://wa.me/48334454122?text=Cze%C5%9B%C4%87!%20Chcia%C5%82bym%20zapyta%C4%87%20o%20us%C5%82ug%C4%99%20WebCraft%20Studio." 
+                <!-- Otagowana wiadomość do etykiety [Web] w WhatsApp Business -->
+                <a href="https://wa.me/48334454122?text=Cze%C5%9B%C4%87!%20Pisze%20z%20podstrony%20WebCraft%20Studio%20-%20chcia%C5%82bym%20zapyta%C4%87%20o%20us%C5%82ug%C4%99." 
                    target="_blank" 
                    rel="noopener noreferrer" 
                    class="wa-start-btn">
                     <svg viewBox="0 0 24 24" style="width: 16px; height: 16px; fill: currentColor;"><path d="M.057 24l1.687-6.163c-1.041-1.804-1.588-3.849-1.587-5.946.003-6.556 5.338-11.891 11.893-11.891 3.181.001 6.167 1.24 8.413 3.488 2.245 2.248 3.481 5.236 3.48 8.414-.003 6.557-5.338 11.892-11.893 11.892-1.99-.001-3.951-.5-5.688-1.448l-6.305 1.654zm6.597-3.807c1.676.995 3.276 1.591 5.392 1.592 5.448 0 9.886-4.434 9.889-9.885.002-5.462-4.415-9.89-9.881-9.892-5.452 0-9.887 4.434-9.889 9.884-.001 2.225.651 3.891 1.746 5.634l-.999 3.648 3.742-.981z"/></svg>
-                    Rozpocznij czat
+                    Napisz na WhatsApp
                 </a>
             </div>
         </div>
@@ -1129,7 +1166,37 @@
         closeRegulaminBtn.addEventListener('click', () => { regModal.style.display = 'none'; });
         window.addEventListener('click', (e) => { if (e.target === regModal) regModal.style.display = 'none'; });
 
-        // WHATSAPP WIDGET TOGGLE
+        // ROTUJĄCE PYTANIA W DYMKU WHATSAPP DLA WEBCRAFT (co 7s)
+        const bubbleData = [
+            { cat: "// WebCraft Studio", text: "Szukasz nowej strony dla biznesu?" },
+            { cat: "// Pakiety Wdrożeniowe", text: "Chcesz poznać szczegóły pakietów?" },
+            { cat: "// Hosting & SaaS", text: "Potrzebujesz stabilnego hostingu i opieki?" },
+            { cat: "// Współpraca", text: "Masz propozycję partnerstwa lub barteru?" },
+            { cat: "// Szybki Kontakt", text: "Napisz do nas bezpośrednio na WhatsApp!" }
+        ];
+
+        let currentBubbleIndex = 0;
+        const bubbleCatEl = document.getElementById('waBubbleCategory');
+        const bubbleTextEl = document.getElementById('waBubbleText');
+        const waBubble = document.getElementById('waBubble');
+
+        function rotateBubble() {
+            if (!waBubble) return;
+            waBubble.style.opacity = '0';
+            waBubble.style.transform = 'translateY(4px)';
+            
+            setTimeout(() => {
+                currentBubbleIndex = (currentBubbleIndex + 1) % bubbleData.length;
+                if (bubbleCatEl) bubbleCatEl.textContent = bubbleData[currentBubbleIndex].cat;
+                if (bubbleTextEl) bubbleTextEl.textContent = bubbleData[currentBubbleIndex].text;
+                waBubble.style.opacity = '1';
+                waBubble.style.transform = 'translateY(0)';
+            }, 400);
+        }
+
+        setInterval(rotateBubble, 7000);
+
+        // WHATSAPP WIDGET & BUBBLE TOGGLE
         const waToggleBtn = document.getElementById('waToggleBtn');
         const waChatBox = document.getElementById('waChatBox');
 
@@ -1138,11 +1205,20 @@
                 e.stopPropagation();
                 const isOpen = waChatBox.style.display === 'flex';
                 waChatBox.style.display = isOpen ? 'none' : 'flex';
+                if (waBubble) waBubble.style.display = isOpen ? 'block' : 'none';
             });
 
+            if (waBubble) {
+                waBubble.addEventListener('click', () => {
+                    waChatBox.style.display = 'flex';
+                    waBubble.style.display = 'none';
+                });
+            }
+
             document.addEventListener('click', (e) => {
-                if (!waChatBox.contains(e.target) && e.target !== waToggleBtn) {
+                if (!waChatBox.contains(e.target) && e.target !== waToggleBtn && e.target !== waBubble) {
                     waChatBox.style.display = 'none';
+                    if (waBubble) waBubble.style.display = 'block';
                 }
             });
         }
