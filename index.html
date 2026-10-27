@@ -583,7 +583,7 @@
             box-shadow: 0 0 15px rgba(37, 211, 102, 0.4);
         }
 
-        /* BANNER COOKIES / RODO (NAPRAWIONE: display: none domyślnie) */
+        /* BANNER COOKIES / RODO (Zoptymalizowany pod urządzenia mobilne) */
         #cookieBanner {
             display: none;
             position: fixed;
@@ -984,7 +984,7 @@
             <h2 class="section-title" style="font-size: 1.35rem; margin-bottom: 0.4rem; text-align: left;">Formularz Kontaktowy / Partnerstwo</h2>
             <p style="text-align: left; margin-bottom: 1.5rem; font-size: 0.85rem; color: var(--text-muted);">
                 Wybierz interesujący Cię pakiet, opisz projekt lub zgłoś propozycję współpracy.<br>
-                Możesz też skontaktować się bezpośrednio przez <strong>WhatsApp / Tel: +48 33 445 41 22</strong>.
+                Możesz też skontaktować się bezpośrednio przez nasz czat i formularze.
             </p>
             
             <form action="https://api.web3forms.com/submit" method="POST">
@@ -1088,15 +1088,13 @@
         </div>
     </div>
 
-    <!-- STOPKA -->
+    <!-- STOPKA (Z USUNIĘTYM NUMEREM I E-MAILAMI) -->
     <footer>
         <div class="footer-links">
             <a id="openRegulamin">Regulamin świadczenia usług</a>
             <a href="polityka-prywatnosci.md" download="polityka-prywatnosci-webcraft.md">Polityka Prywatności (.md)</a>
             <a href="cookies.md" download="cookies-webcraft.md" style="color: var(--accent-blue);">Polityka Cookies (.md)</a>
             <a id="openCookieSettings" style="color: var(--accent-blue);">// Ustawienia Cookies</a>
-            <a href="tel:+48334454122" style="color: #25d366;">Tel / WA: +48 33 445 41 22</a>
-            <a href="mailto:kontakt@devlabstudy.ovh">Kontakt e-mail</a>
         </div>
         <p>&copy; 2026 WebCraft Studio &bull; Część ekosystemu projektu <strong>DevLabStudy</strong>. Wszelkie prawa zastrzeżone.</p>
     </footer>
@@ -1223,7 +1221,7 @@
             });
         }
 
-        // LOGIKA ZARZĄDZANIA COOKIES & GOOGLE CONSENT MODE
+        // LOGIKA ZARZĄDZANIA COOKIES & GOOGLE CONSENT MODE (Zoptymalizowana pod mobile)
         const cookieBanner = document.getElementById('cookieBanner');
         const btnAcceptAll = document.getElementById('btnAcceptAll');
         const btnRejectAll = document.getElementById('btnRejectAll');
@@ -1242,7 +1240,7 @@
 
         if (!currentConsent) {
             setTimeout(() => {
-                if (cookieBanner) cookieBanner.style.display = 'flex';
+                if (cookieBanner) cookieBanner.style.setProperty('display', 'flex', 'important');
             }, 200);
         } else if (currentConsent === 'all') {
             updateGtagConsent(true);
@@ -1254,7 +1252,7 @@
             btnAcceptAll.addEventListener('click', () => {
                 localStorage.setItem('webcraft_cookie_consent', 'all');
                 updateGtagConsent(true);
-                if (cookieBanner) cookieBanner.style.display = 'none';
+                if (cookieBanner) cookieBanner.style.setProperty('display', 'none', 'important');
             });
         }
 
@@ -1262,7 +1260,7 @@
             btnRejectAll.addEventListener('click', () => {
                 localStorage.setItem('webcraft_cookie_consent', 'rejected');
                 updateGtagConsent(false);
-                if (cookieBanner) cookieBanner.style.display = 'none';
+                if (cookieBanner) cookieBanner.style.setProperty('display', 'none', 'important');
             });
         }
 
@@ -1270,14 +1268,14 @@
             btnAcceptNecessary.addEventListener('click', () => {
                 localStorage.setItem('webcraft_cookie_consent', 'necessary');
                 updateGtagConsent(false);
-                if (cookieBanner) cookieBanner.style.display = 'none';
+                if (cookieBanner) cookieBanner.style.setProperty('display', 'none', 'important');
             });
         }
 
         if (openSettingsLink) {
             openSettingsLink.addEventListener('click', (e) => {
                 e.preventDefault();
-                if (cookieBanner) cookieBanner.style.display = 'flex';
+                if (cookieBanner) cookieBanner.style.setProperty('display', 'flex', 'important');
             });
         }
     </script>
